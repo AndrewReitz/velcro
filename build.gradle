@@ -1,0 +1,74 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.8.+'
+        classpath 'com.jakewharton.hugo:hugo-plugin:1.0.+'
+    }
+}
+
+// Manifest version information!
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 0
+def versionBuild = 0
+
+apply plugin: 'android'
+apply plugin: 'hugo'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:+'
+
+    compile 'com.intellij:annotations:12.0'
+
+    compile 'com.jakewharton.timber:timber:2.1.+'
+    compile 'com.jakewharton:butterknife:4.0.+'
+
+    compile 'com.squareup.dagger:dagger:1.2.0'
+    provided 'com.squareup.dagger:dagger-compiler:1.2.0'
+
+    compile 'com.github.frankiesardo:icepick:2.3.1'
+    provided 'com.github.frankiesardo:icepick-processor:2.3.1'
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+def buildTime = new Date().format("yyyy-MM-dd'T'HH:mm'Z'", TimeZone.getTimeZone("UTC"))
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.2"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 19
+
+        versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+
+        buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
+        buildConfigField "String", "BUILD_TIME", "\"${buildTime}\""
+    }
+
+    buildTypes {
+        debug {
+            packageNameSuffix '.dev'
+            versionNameSuffix '-dev'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
