@@ -15,17 +15,16 @@ import dagger.Provides;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 @Module(
-        library = true,
         includes = {
         },
         injects = {
+                VelcroApp.class
         }
 )
-public class AndroidModule {
-
+public class VelcroAppModule {
     private final VelcroApp app;
 
-    public AndroidModule(@NotNull VelcroApp app) {
+    public VelcroAppModule(@NotNull VelcroApp app) {
         this.app = checkNotNull(app);
     }
 
