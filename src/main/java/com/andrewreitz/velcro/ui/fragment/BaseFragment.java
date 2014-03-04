@@ -1,4 +1,4 @@
-package com.andrewreitz.velcro.ui.fragment
+package com.andrewreitz.velcro.ui.fragment;
 
 import android.app.Fragment;
 
