@@ -13,7 +13,7 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
 
-        // Release the views injects by butterknife
+        // Release the views injected by butterknife
         ButterKnife.reset(this);
     }
 }
