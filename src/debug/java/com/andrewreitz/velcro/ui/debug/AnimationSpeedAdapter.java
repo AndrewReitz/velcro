@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.jakewharton.u2020.ui.misc.BindableAdapter;
+import com.andrewreitz.velcro.ui.adapter.BindableAdapter;
 
 import static butterknife.ButterKnife.findById;
 

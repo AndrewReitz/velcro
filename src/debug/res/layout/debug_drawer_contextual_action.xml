@@ -4,4 +4,4 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    style="@style/Widget.U2020.DebugDrawer.RowWidget"/>
+    style="@style/Widget.Velcro.DebugDrawer.RowWidget"/>

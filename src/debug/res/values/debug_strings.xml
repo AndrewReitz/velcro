@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="application_name">U+2020 Dagger Sample Debug</string>
-    <string name="launcher_name">U+2020 Debug</string>
+    <string name="application_name">Velcro Debug</string>
+    <string name="launcher_name">Velcro Debug</string>
     <string name="development_settings">Development Settings</string>
     <string name="debug_drawer_welcome">Debug settings are available in this drawer.</string>
 </resources>
