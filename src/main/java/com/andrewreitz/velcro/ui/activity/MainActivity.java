@@ -20,6 +20,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         VelcroApp app = VelcroApp.get(this);
+
         container = appContainer.get(this, app);
 
         getLayoutInflater().inflate(R.layout.activity_main, container);

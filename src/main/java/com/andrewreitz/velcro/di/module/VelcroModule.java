@@ -12,12 +12,10 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 @Module(
         includes = {
-                DataModule.class,
-                UiModule.class
+                UiModule.class,
+                DataModule.class
         },
         injects = {
                 VelcroApp.class
@@ -27,7 +25,7 @@ public final class VelcroModule {
     private final VelcroApp app;
 
     public VelcroModule(@NotNull VelcroApp app) {
-        this.app = checkNotNull(app);
+        this.app = app;
     }
 
     /**

@@ -1,14 +1,15 @@
 package com.andrewreitz.velcro;
 
-//TODO FIX ME!!
-final class Modules {
-  static Object[] list(U2020App app) {
-    return new Object[] {
-        new U2020Module(app)
-    };
-  }
+import com.andrewreitz.velcro.di.module.VelcroModule;
 
-  private Modules() {
-    // No instances.
-  }
+final class Modules {
+    static Object[] list(U2020App app) {
+        return new Object[]{
+                new VelcroModule(app)
+        };
+    }
+
+    private Modules() {
+        // No instances.
+    }
 }

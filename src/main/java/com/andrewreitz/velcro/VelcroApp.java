@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.andrewreitz.velcro.ui.ActivityHierarchyServer;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -52,11 +54,11 @@ public class VelcroApp extends Application {
         return objectGraph;
     }
 
-    public void inject(Object o) {
+    public void inject(@NotNull Object o) {
         objectGraph.inject(o);
     }
 
-    public static VelcroApp get(Context context) {
+    public static VelcroApp get(@NotNull Context context) {
         return (VelcroApp) context.getApplicationContext();
     }
 

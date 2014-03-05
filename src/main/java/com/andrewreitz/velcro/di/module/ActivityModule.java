@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.andrewreitz.velcro.di.annotation.ForActivity;
+import com.andrewreitz.velcro.ui.activity.MainActivity;
 
 import javax.inject.Singleton;
 
@@ -14,6 +15,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 @Module(
         injects = {
+                MainActivity.class
         },
         addsTo = VelcroModule.class,
         library = true
