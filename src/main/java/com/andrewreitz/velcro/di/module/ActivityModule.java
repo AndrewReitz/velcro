@@ -15,7 +15,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 @Module(
         injects = {
         },
-        addsTo = AndroidModule.class,
+        addsTo = VelcroModule.class,
         library = true
 )
 public class ActivityModule {
@@ -30,9 +30,7 @@ public class ActivityModule {
      * {@link com.andrewreitz.velcro.di.annotation.ForActivity } to explicitly
      * differentiate it from application context.
      */
-    @Provides
-    @Singleton
-    @ForActivity Context provideActivityContext() {
+    @Provides @Singleton @ForActivity Context provideActivityContext() {
         return activity;
     }
 }

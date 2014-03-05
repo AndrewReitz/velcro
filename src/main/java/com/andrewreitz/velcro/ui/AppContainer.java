@@ -7,6 +7,7 @@ import com.andrewreitz.velcro.VelcroApp;
 
 import static butterknife.ButterKnife.findById;
 
+/** From https://github.com/JakeWharton/u2020 */
 /** An indirection which allows controlling the root container used for each activity. */
 public interface AppContainer {
     /** The root {@link android.view.ViewGroup} into which the activity should place its contents. */

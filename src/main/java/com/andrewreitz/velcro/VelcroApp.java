@@ -13,9 +13,6 @@ import butterknife.ButterKnife;
 import dagger.ObjectGraph;
 import timber.log.Timber;
 
-/**
- * @author areitz
- */
 public class VelcroApp extends Application {
 
     @Inject ActivityHierarchyServer activityHierarchyServer;

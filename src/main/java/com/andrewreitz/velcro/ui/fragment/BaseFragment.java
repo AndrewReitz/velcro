@@ -4,9 +4,6 @@ import android.app.Fragment;
 
 import butterknife.ButterKnife;
 
-/**
- * @author areitz
- */
 public abstract class BaseFragment extends Fragment {
 
     @Override

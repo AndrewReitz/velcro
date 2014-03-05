@@ -1,11 +1,11 @@
 package com.andrewreitz.velcro;
 
-import com.andrewreitz.velcro.di.module.VelcroAppModule;
+import com.andrewreitz.velcro.di.module.VelcroModule;
 
 final class Modules {
   static Object[] list(VelcroApp app) {
     return new Object[] {
-        new VelcroAppModule(app)
+        new VelcroModule(app)
     };
   }
 

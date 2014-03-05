@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+/** From https://github.com/JakeWharton/u2020 */
 /** A "view server" adaptation which automatically hooks itself up to all activities. */
 public interface ActivityHierarchyServer extends Application.ActivityLifecycleCallbacks {
   /** An {@link ActivityHierarchyServer} which does nothing. */

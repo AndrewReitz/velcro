@@ -15,12 +15,9 @@ import java.util.List;
 import dagger.ObjectGraph;
 import icepick.Icepick;
 
-/**
- * @author Andrew
- */
 public abstract class BaseActivity extends Activity {
 
-    private ObjectGraph activitygraph;
+    private ObjectGraph activityGraph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +27,20 @@ public abstract class BaseActivity extends Activity {
         // Inject objects into the object graph at the activity level, this is for
         // objects that need values that aren't available until the activity is created.
         VelcroApp application = VelcroApp.get(this);
-        activitygraph = application
+        activityGraph = application
                 .getObjectGraph()
                 .plus(
                         getModules().toArray()
                 );
 
-        activitygraph.inject(this);
+        activityGraph.inject(this);
     }
 
     @Override
     protected void onDestroy() {
         // Eagerly clear the reference to the activity graph to allow
         // it to be garbage collected as soon as possible.
-        activitygraph = null;
+        activityGraph = null;
         super.onDestroy();
     }
 
@@ -65,7 +62,7 @@ public abstract class BaseActivity extends Activity {
      * Inject the supplied {@code object} using the activity-specific graph.
      */
     public void inject(Object object) {
-        activitygraph.inject(object);
+        activityGraph.inject(object);
     }
 
     public static BaseActivity get(Fragment fragment) {

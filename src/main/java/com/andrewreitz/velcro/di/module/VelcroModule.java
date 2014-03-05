@@ -16,15 +16,17 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 @Module(
         includes = {
+                DataModule.class,
+                UiModule.class
         },
         injects = {
                 VelcroApp.class
         }
 )
-public class VelcroAppModule {
+public final class VelcroModule {
     private final VelcroApp app;
 
-    public VelcroAppModule(@NotNull VelcroApp app) {
+    public VelcroModule(@NotNull VelcroApp app) {
         this.app = checkNotNull(app);
     }
 
@@ -33,9 +35,7 @@ public class VelcroAppModule {
      * {@link com.andrewreitz.velcro.di.annotation.ForApplication}
      * to explicitly differentiate it from an activity context.
      */
-    @Provides
-    @Singleton
-    @ForApplication Application provideApplicationContext() {
+    @Provides @Singleton @ForApplication Application provideApplication() {
         return app;
     }
 }
