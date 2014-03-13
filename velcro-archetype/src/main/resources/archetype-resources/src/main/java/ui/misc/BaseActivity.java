@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 
-import ${package}.VelcroApp;
+import ${package}.${applicationName}App;
 import ${package}.ui.ActivityModule;
 
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +26,7 @@ public abstract class BaseActivity extends Activity {
 
         // Inject objects into the object graph at the activity level, this is for
         // objects that need values that aren't available until the activity is created.
-        VelcroApp application = VelcroApp.get(this);
+        ${applicationName}App application = ${applicationName}App.get(this);
         activityGraph = application
                 .getObjectGraph()
                 .plus(

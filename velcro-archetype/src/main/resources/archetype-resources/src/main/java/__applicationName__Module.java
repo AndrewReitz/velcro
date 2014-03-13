@@ -24,7 +24,7 @@ import dagger.Provides;
 public final class ${applicationName}Module {
     private final ${applicationName}App app;
 
-    public ${applicationName}Module(@NotNull VelcroApp app) {
+    public ${applicationName}Module(@NotNull ${applicationName}App app) {
         this.app = app;
     }
 

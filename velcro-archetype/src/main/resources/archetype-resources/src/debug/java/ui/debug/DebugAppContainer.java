@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 import ${package}.BuildConfig;
 import ${package}.R;
-import ${package}.VelcroApp;
+import ${package}.${applicationName}App;
 import ${package}.data.prefs.BooleanPreference;
 import ${package}.data.prefs.IntPreference;
 import ${package}.data.AnimationSpeed;
@@ -67,7 +67,7 @@ public class DebugAppContainer implements AppContainer {
     private final BooleanPreference scalpelWireframeEnabled;
     private final BooleanPreference seenDebugDrawer;
 
-    VelcroApp app;
+    ${applicationName}App app;
     Activity activity;
     Context drawerContext;
 
@@ -114,7 +114,7 @@ public class DebugAppContainer implements AppContainer {
     @InjectView(R.id.debug_device_release) TextView deviceReleaseView;
     @InjectView(R.id.debug_device_api) TextView deviceApiView;
 
-    @Override public ViewGroup get(final Activity activity, VelcroApp app) {
+    @Override public ViewGroup get(final Activity activity, ${applicationName}App app) {
         this.app = app;
         this.activity = activity;
         drawerContext = activity;

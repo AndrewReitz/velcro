@@ -3,7 +3,7 @@ package ${package}.ui;
 import android.app.Activity;
 import android.content.Context;
 
-import ${package}.VelcroModule;
+import ${package}.${applicationName}Module;
 
 import javax.inject.Singleton;
 
@@ -16,7 +16,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
         injects = {
                 MainActivity.class
         },
-        addsTo = VelcroModule.class,
+        addsTo = ${applicationName}Module.class,
         library = true
 )
 public class ActivityModule {

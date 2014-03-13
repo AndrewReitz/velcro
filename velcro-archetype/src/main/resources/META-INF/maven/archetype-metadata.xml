@@ -17,31 +17,52 @@
                 <include>**/*.java</include>
             </includes>
         </fileSet>
-        <fileSet filtered="true" packaged="true" encoding="UTF-8">
-            <directory>src/*/java</directory>
-            <includes>
-                <include>**/*.java</include>
-                <include>README.txt</include>
-            </includes>
-        </fileSet>
-        <fileSet filtered="true" packaged="true" encoding="UTF-8">
-            <directory>src/*</directory>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/main</directory>
             <includes>
                 <include>AndroidManifest.xml</include>
             </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
-            <directory>src/*/res</directory>
+            <directory>src/main/res</directory>
             <includes>
                 <include>**/*.xml</include>
             </includes>
         </fileSet>
         <fileSet filtered="false" encoding="UTF-8">
-            <directory>src/*/res</directory>
+            <directory>src/main/res</directory>
             <includes>
                 <include>**/*.png</include>
             </includes>
         </fileSet>
+
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/debug/java</directory>
+            <includes>
+                <include>**/*.java</include>
+                <include>README.txt</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/debug/res</directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="false" encoding="UTF-8">
+            <directory>src/debug/res</directory>
+            <includes>
+                <include>**/*.png</include>
+            </includes>
+        </fileSet>
+
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/release/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+
         <fileSet filtered="false" encoding="UTF-8">
             <directory>gradle/wrapper</directory>
             <includes>

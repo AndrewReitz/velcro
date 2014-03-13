@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 
 import ${package}.R;
-import ${package}.VelcroApp;
+import ${package}.${applicationName}App;
 import ${package}.ui.AppContainer;
 import ${package}.ui.misc.BaseActivity;
 
@@ -20,7 +20,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        VelcroApp app = VelcroApp.get(this);
+        ${applicationName}App app = ${applicationName}App.get(this);
 
         container = appContainer.get(this, app);
 
