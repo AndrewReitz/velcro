@@ -1,0 +1,5 @@
+# Create a file called gradle.properties and copy these properties there
+# When you want to actually build the release you will need to supply real values
+keystorePassword=ThisKeyIsNotSoSecret
+aliasKeyPassword=ThisKeyIsNotSoSecret
+storeFilePath=Path/To/Key/Store

@@ -1,4 +1,4 @@
-package com.andrewreitz.velcro.data.prefs;
+package ${package}.data.prefs;
 
 import org.jetbrains.annotations.NotNull;
 
