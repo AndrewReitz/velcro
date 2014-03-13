@@ -1,4 +1,4 @@
-package com.andrewreitz.velcro.di.annotation;
+package com.andrewreitz.velcro.data;
 
 import java.lang.annotation.Retention;
 
@@ -7,5 +7,5 @@ import javax.inject.Qualifier;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Qualifier @Retention(RUNTIME)
-public @interface PixelGridEnabled {
+public @interface AnimationSpeed {
 }

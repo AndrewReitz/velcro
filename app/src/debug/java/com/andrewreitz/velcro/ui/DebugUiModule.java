@@ -1,4 +1,4 @@
-package com.andrewreitz.velcro.di.module;
+package com.andrewreitz.velcro.ui;
 
 import com.andrewreitz.velcro.ui.ActivityHierarchyServer;
 import com.andrewreitz.velcro.ui.AppContainer;

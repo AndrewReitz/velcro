@@ -1,4 +1,4 @@
-package com.andrewreitz.velcro.ui.activity;
+package com.andrewreitz.velcro.ui;
 
 import android.os.Bundle;
 import android.view.ViewGroup;
@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import com.andrewreitz.velcro.R;
 import com.andrewreitz.velcro.VelcroApp;
 import com.andrewreitz.velcro.ui.AppContainer;
+import com.andrewreitz.velcro.ui.misc.BaseActivity;
 
 import javax.inject.Inject;
 

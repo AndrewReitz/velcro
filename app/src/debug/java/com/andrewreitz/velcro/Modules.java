@@ -1,8 +1,5 @@
 package com.andrewreitz.velcro;
 
-import com.andrewreitz.velcro.di.module.DebugVelcroModule;
-import com.andrewreitz.velcro.di.module.VelcroModule;
-
 import org.jetbrains.annotations.NotNull;
 
 final class Modules {

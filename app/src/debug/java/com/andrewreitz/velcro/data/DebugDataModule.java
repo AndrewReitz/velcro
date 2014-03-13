@@ -1,15 +1,9 @@
-package com.andrewreitz.velcro.di.module;
+package com.andrewreitz.velcro.data;
 
 import android.content.SharedPreferences;
 
 import com.andrewreitz.velcro.data.prefs.BooleanPreference;
 import com.andrewreitz.velcro.data.prefs.IntPreference;
-import com.andrewreitz.velcro.di.annotation.AnimationSpeed;
-import com.andrewreitz.velcro.di.annotation.PixelGridEnabled;
-import com.andrewreitz.velcro.di.annotation.PixelRatioEnabled;
-import com.andrewreitz.velcro.di.annotation.ScalpelEnabled;
-import com.andrewreitz.velcro.di.annotation.ScalpelWireframeEnabled;
-import com.andrewreitz.velcro.di.annotation.SeenDebugDrawer;
 
 import javax.inject.Singleton;
 

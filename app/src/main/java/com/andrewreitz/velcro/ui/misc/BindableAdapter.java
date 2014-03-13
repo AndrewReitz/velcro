@@ -1,4 +1,4 @@
-package com.andrewreitz.velcro.ui.adapter;
+package com.andrewreitz.velcro.ui.misc;
 
 import android.content.Context;
 import android.view.LayoutInflater;

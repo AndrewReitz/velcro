@@ -1,8 +1,4 @@
-package com.andrewreitz.velcro.di.module;
-
-import com.andrewreitz.velcro.ui.ActivityHierarchyServer;
-import com.andrewreitz.velcro.ui.AppContainer;
-import com.andrewreitz.velcro.ui.activity.MainActivity;
+package com.andrewreitz.velcro.ui;
 
 import javax.inject.Singleton;
 

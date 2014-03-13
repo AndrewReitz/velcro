@@ -1,10 +1,9 @@
-package com.andrewreitz.velcro.di.module;
+package com.andrewreitz.velcro.ui;
 
 import android.app.Activity;
 import android.content.Context;
 
-import com.andrewreitz.velcro.di.annotation.ForActivity;
-import com.andrewreitz.velcro.ui.activity.MainActivity;
+import com.andrewreitz.velcro.VelcroModule;
 
 import javax.inject.Singleton;
 
@@ -29,7 +28,7 @@ public class ActivityModule {
 
     /**
      * Allow the activity context to be injected but require that it be annotated with
-     * {@link com.andrewreitz.velcro.di.annotation.ForActivity } to explicitly
+     * {@link ForActivity } to explicitly
      * differentiate it from application context.
      */
     @Provides @Singleton @ForActivity Context provideActivityContext() {

@@ -1,10 +1,10 @@
-package com.andrewreitz.velcro.di.module;
+package com.andrewreitz.velcro.data;
 
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.andrewreitz.velcro.di.annotation.ForApplication;
+import com.andrewreitz.velcro.ForApplication;
 
 import javax.inject.Singleton;
 

@@ -1,11 +1,11 @@
-package com.andrewreitz.velcro.ui.activity;
+package com.andrewreitz.velcro.ui.misc;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 
 import com.andrewreitz.velcro.VelcroApp;
-import com.andrewreitz.velcro.di.module.ActivityModule;
+import com.andrewreitz.velcro.ui.ActivityModule;
 
 import org.jetbrains.annotations.NotNull;
 

@@ -1,4 +1,4 @@
-package com.andrewreitz.velcro.di.annotation;
+package com.andrewreitz.velcro.data;
 
 import java.lang.annotation.Retention;
 

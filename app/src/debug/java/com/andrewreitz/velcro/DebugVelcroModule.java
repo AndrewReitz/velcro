@@ -1,4 +1,7 @@
-package com.andrewreitz.velcro.di.module;
+package com.andrewreitz.velcro;
+
+import com.andrewreitz.velcro.data.DebugDataModule;
+import com.andrewreitz.velcro.ui.DebugUiModule;
 
 import dagger.Module;
 
