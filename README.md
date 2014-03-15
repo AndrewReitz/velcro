@@ -28,6 +28,7 @@ cd into the directory that was created and run the following
     chmod +x gradlew
     mv gradle.properties.dist gradle.properties
     
+Your application is now ready to be imported into Android Studio or run gradle tasks
 ## Other Info
 The gradle.properties.dist is an example of what your gradle.properties should look like. This helps avoid checking in of release signing passwords. The data in there can be incorrect for debug builds but is still required to be there for gradle to run.
 
