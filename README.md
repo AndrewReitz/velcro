@@ -30,6 +30,19 @@ cd into the directory that was created and run the following
     
 Your application is now ready to be imported into Android Studio or run gradle tasks
 
+## Libraries Included
+
+Before diving in and using this project I suggest you check out and understand these libraries. Most of them will do work for you automatically when you use the BaseActivity or BaseFragment.
+
+* [Dagger](https://github.com/square/dagger) Dependecy Injector
+* [Butter Knife](https://github.com/JakeWharton/butterknife) View Injector
+* [Icepick](https://github.com/frankiesardo/icepick) Save and Restore State
+* [Guava](https://code.google.com/p/guava-libraries/) Core Google Java Libs
+* [IntelliJ Annotations](https://www.jetbrains.com/idea/documentation/howto.html) @NotNull and @NotNull
+* [Timber](https://github.com/JakeWharton/timber) Better Android Logger
+* [Madge](https://github.com/JakeWharton/madge) Asset Debugging
+* [Scalpel](https://github.com/JakeWharton/scalpel) View Debugging
+
 ## Other Info
 
 The gradle.properties.dist is an example of what your gradle.properties should look like. This helps avoid checking in of release signing passwords. The data in there can be incorrect for debug builds but is still required to be there for gradle to run. The pom.xml is left over from the archetype and my be deleted.
