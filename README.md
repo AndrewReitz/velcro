@@ -15,13 +15,13 @@ Run:
     mvn archetype:generate \
     -DarchetypeArtifactId=velcro \
     -DarchetypeGroupId=com.andrewreitz.velcro \
-    -DarchetypeVersion=1.0.0-SNAPSHOT \
+    -DarchetypeVersion=1.0.0 \
     -DgroupId={your.package.name.here} \
     -DartifactId={appName} \
     -DapplicationName={AppName} \
     -Dversion=1.0
 
-Filling in the groupId, artifactId, and applicationName. Where groupId is the package you want for your application, artifactId should be your application name with no spaces and camel cased, and applicationName is the name of your application all one word.
+Filling in the groupId, artifactId, and applicationName. Where groupId is the package you want for your application, artifactId should be your application name with no spaces (ex. my-test-app), and applicationName is the name of your application all one word (ex. MyTestApp).
 
 cd into the directory that was created and run the following
 
@@ -29,8 +29,10 @@ cd into the directory that was created and run the following
     mv gradle.properties.dist gradle.properties
     
 Your application is now ready to be imported into Android Studio or run gradle tasks
+
 ## Other Info
-The gradle.properties.dist is an example of what your gradle.properties should look like. This helps avoid checking in of release signing passwords. The data in there can be incorrect for debug builds but is still required to be there for gradle to run.
+
+The gradle.properties.dist is an example of what your gradle.properties should look like. This helps avoid checking in of release signing passwords. The data in there can be incorrect for debug builds but is still required to be there for gradle to run. The pom.xml is left over from the archetype and my be deleted.
 
 ## License
 
