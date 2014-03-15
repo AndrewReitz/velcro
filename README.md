@@ -11,7 +11,6 @@ f Jake Whartons's [U2020](https://github.com/JakeWharton/u2020) and has a debug 
 You will need Maven installed to use this archetype
 
 Run:
-
     mvn archetype:generate \
     -DarchetypeArtifactId=velcro \
     -DarchetypeGroupId=com.andrewreitz \
@@ -24,10 +23,8 @@ Run:
 Filling in the groupId, artifactId, and applicationName. Where groupId is the package you want for your application, artifactId should be your application name with no spaces and camel cased, and applicationName is the name of your application all one word.
 
 cd into the directory that was created and run the following
-
-    chmod +x gradlew                                                                                                                                                                                                                                                                                                                       
+    chmod +x gradlew
     mv gradle.properties.dist gradle.properties
-    
     
 ## Other Info
 The gradle.properties.dist is an example of what your gradle.properties should look like. This helps avoid checking in of release signing passwords. The data in there can be incorrect for debug builds but is still required to be there for gradle to run.
