@@ -80,7 +80,6 @@
             <includes>
                 <include>build.gradle</include>
                 <include>gradle.properties.dist</include>
-                <include>gradle.properties</include>
                 <include>README.md</include>
                 <include>.gitignore</include>
             </includes>

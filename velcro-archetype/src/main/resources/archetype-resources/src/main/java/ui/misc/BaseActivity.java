@@ -19,9 +19,9 @@ public abstract class BaseActivity extends Activity {
 
     private ObjectGraph activityGraph;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Restore objects saved with Icepick
         Icepick.restoreInstanceState(this, savedInstanceState);
 
         // Inject objects into the object graph at the activity level, this is for
@@ -36,19 +36,16 @@ public abstract class BaseActivity extends Activity {
         activityGraph.inject(this);
     }
 
-    @Override
-    protected void onDestroy() {
+    @Override protected void onDestroy() {
         // Eagerly clear the reference to the activity graph to allow
         // it to be garbage collected as soon as possible.
         activityGraph = null;
         super.onDestroy();
     }
 
-    /**
-     * Do all Icepick tasks automagically
-     */
     @Override public void onSaveInstanceState(@NotNull Bundle outState) {
         super.onSaveInstanceState(outState);
+        // Save out objects annotated with @Icicle
         Icepick.saveInstanceState(this, outState);
     }
 
@@ -58,9 +55,7 @@ public abstract class BaseActivity extends Activity {
         );
     }
 
-    /**
-     * Inject the supplied {@code object} using the activity-specific graph.
-     */
+    /** Inject the supplied {@code object} using the activity-specific graph. */
     public void inject(Object object) {
         activityGraph.inject(object);
     }
