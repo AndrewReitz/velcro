@@ -13,6 +13,7 @@
     <parent>
         <groupId>com.andrewreitz.velcro</groupId>
         <artifactId>velcro-project</artifactId>
-        <version>7</version>
+        <version>1.0.0-SNAPSHOT</version>
+	<relativePath>../pom.xml</relativePath>
     </parent>
 </project>
