@@ -1,0 +1,59 @@
+ext {
+    DEBUG = true
+    APP_FOLDER = "velcro-app"
+    ARCHETYPE_FOLDER = "velcro-archetype-test/src/main/resources/archetype-resources"
+    FILTER_APP_NAME = "Velcro" // filtered out of files and replaced with ${applicationName}
+    APP_NAME_REPLACE = "\${applicationName}"
+    FILTER_PACKAGE = "com.andrewreitz.velcro"
+    PACKAGE_REPLACE = "\${package}"
+    KEEP_FILES = ["README.md", "pom.xml"] // files to be kept when doing a clean
+    REWRITE_PATH = "/com/andrewreitz/velcro" // Any path that contains this path we need to remove it
+    // Directories that are now empty since we rewrote the paths of the files in them
+    REWRITE_DIRS = ["src/debug/java/com", "src/main/java/com", "src/release/java/com"]
+}
+
+defaultTasks 'clean', 'build'
+
+task clean << {
+    def files = files { file(ARCHETYPE_FOLDER).listFiles() }
+    files.each { File file ->
+        log file.name
+        if (!KEEP_FILES.contains(file.name)) {
+            log "Delete $file"
+            delete file
+        }
+    }
+}
+
+task build << {
+    copy {
+        from APP_FOLDER
+        into ARCHETYPE_FOLDER
+        eachFile {
+            def path = it.path
+            if (path.contains(REWRITE_PATH)) {
+                log "Chaning path of $it"
+                it.setPath(path.replace(REWRITE_PATH, ""))
+            }
+
+            if (!it.name.endsWith(".png")) {
+                filter {
+                    it.replace(FILTER_APP_NAME, APP_NAME_REPLACE).replace(FILTER_PACKAGE, PACKAGE_REPLACE)
+                }
+            }
+        }
+    }
+
+    // We end up with empty directories since eachFile does not get a chance to operate on them only the files
+    REWRITE_DIRS.each {
+        def file = new File(ARCHETYPE_FOLDER, it)
+        log "Deleting directory $file"
+        delete file
+    }
+}
+
+def log(String message) {
+    if (DEBUG) {
+        println message
+    }
+}
