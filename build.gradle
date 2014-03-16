@@ -1,11 +1,11 @@
 ext {
     DEBUG = true
 
-    /** Folder where the application we are generating the archetype is comming from */
+    /** Folder where the application we are generating the archetype is coming from */
     APP_FOLDER = "velcro-app"
 
     /** The resources folder inside the archetype to place the app files */
-    ARCHETYPE_FOLDER = "velcro-archetype-test/src/main/resources/archetype-resources"
+    ARCHETYPE_FOLDER = "velcro-archetype/src/main/resources/archetype-resources"
 
     /** App Name needs to be filtered out of files and replaced with ${applicationName} */
     FILTER_APP_NAME = "Velcro"
