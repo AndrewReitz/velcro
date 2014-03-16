@@ -13,6 +13,9 @@ ext {
     /** What the application name should be replaced with. This value is defined in archetype-metadata.xml */
     APP_NAME_REPLACE = "\${applicationName}"
 
+    /** Replaces the application name in file names with this */
+    APP_NAME_FILENAME_REPLACE = "__applicationName__"
+
     /** Package value that needs to be filtered out and replaced with archetype variable */
     FILTER_PACKAGE = "com.andrewreitz.velcro"
 
@@ -53,6 +56,11 @@ task build << {
             if (path.contains(REWRITE_PATH)) {
                 log "Chaning path of $file"
                 file.setPath(path.replace(REWRITE_PATH, ""))
+            }
+
+            def name = file.name
+            if (name.contains(FILTER_APP_NAME)) {
+                file.setName(name.replace(FILTER_APP_NAME, APP_NAME_FILENAME_REPLACE))
             }
 
             // Only filter specific files, images and binaries will become corrupt
