@@ -64,7 +64,7 @@ android {
         release {
             storeFile file(storeFilePath)
             storePassword keystorePassword
-            keyAlias "${applicationName}"
+            keyAlias storeKeyAlias
             keyPassword aliasKeyPassword
         }
     }

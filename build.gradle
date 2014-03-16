@@ -1,3 +1,7 @@
+import java.nio.file.Files
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING
+
 ext {
     DEBUG = true
 
@@ -22,17 +26,14 @@ ext {
     /** Standard archetype package variable */
     PACKAGE_REPLACE = "\${package}"
 
-    /** files to be kept when doing a clean */
+    /** files to be kept when doing a clean. These are setup specific to the archetype */
     KEEP_FILES = ["README.md", "pom.xml"]
 
     /** Any path that contains this path we need to remove it so it ends up in the java folder */
     REWRITE_PATH = "/com/andrewreitz/velcro"
 
-    /** Directories that are now empty since we rewrote the paths of the files in them */
-    REWRITE_DIRS = ["src/debug/java/com", "src/main/java/com", "src/release/java/com"]
-
-    /** Files with these exentions have values that should be replaced with archetype variable */
-    FILTER_EXTENSIONS = [".xml", ".java", ".md"]
+    /** Files with these extensions have values that should be replaced with archetype variable */
+    FILTER_EXTENSIONS = [".xml", ".java", ".md", ".dist"]
 }
 
 defaultTasks 'clean', 'build'
@@ -48,10 +49,25 @@ task clean << {
 }
 
 task build << {
+
+    // copy explicitly the git ignore because gradle copy forgets it...
+    def gitIgnore = new File(APP_FOLDER, ".gitignore")
+    Files.copy(gitIgnore.toPath(), new File(ARCHETYPE_FOLDER, gitIgnore.name).toPath(), REPLACE_EXISTING)
+
     copy {
         from APP_FOLDER
         into ARCHETYPE_FOLDER
+        includeEmptyDirs false
         eachFile { file ->
+
+            // Skip trying to copy a file we save
+            for (name in KEEP_FILES) {
+                if (file.name == name) {
+                    file.exclude()
+                    return
+                }
+            }
+
             def path = file.path
             if (path.contains(REWRITE_PATH)) {
                 log "Chaning path of $file"
@@ -72,13 +88,6 @@ task build << {
                 }
             }
         }
-    }
-
-    // We end up with empty directories since eachFile does not get a chance to operate on them only the files
-    REWRITE_DIRS.each {
-        def file = new File(ARCHETYPE_FOLDER, it)
-        log "Deleting directory $file"
-        delete file
     }
 }
 

@@ -64,7 +64,7 @@ android {
         release {
             storeFile file(storeFilePath)
             storePassword keystorePassword
-            keyAlias "velcro"
+            keyAlias storeKeyAlias
             keyPassword aliasKeyPassword
         }
     }
