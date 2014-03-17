@@ -17,7 +17,7 @@ Run:
     -DarchetypeGroupId=com.andrewreitz.velcro \
     -DarchetypeVersion=1.0.0 \
     -DgroupId={your.package.name.here} \
-    -DartifactId={appName} \
+    -DartifactId={app-name} \
     -DapplicationName={AppName} \
     -Dversion=1.0
 
@@ -46,6 +46,10 @@ Before diving in and using this project I suggest you check out and understand t
 ## Other Info
 
 The gradle.properties.dist is an example of what your gradle.properties should look like. This helps avoid checking in of release signing passwords. The data in there can be incorrect for debug builds but is still required to be there for gradle to run. The pom.xml is left over from the archetype and my be deleted.
+
+## Contributing
+
+A gradle script has been setup so that all you need to do to add your own code to the starting project is to open up the velcro-app in Android studio and work on it like you would any other Android Project. Assuming you keep the same package and application name (Velcro) you should be able to run `gradle build`. This will copy the files over into their correct location and and archetype variables where required. From this point you can continue on like it's a standard maven archetype for testing and deployment.
 
 ## License
 
