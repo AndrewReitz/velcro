@@ -2,9 +2,9 @@
 
 ## Bootstrap for your Android Projects.
 
-Get your Android applications of the ground and running fast with this archetype. This bootstrap should contain everything you need to get going but not so much you \
-have to spend time stripping things out. If you find your self deleting something frequently then it should probably be moved. This application is highly based off o\
-f Jake Whartons's [U2020](https://github.com/JakeWharton/u2020) and has a debug drawer reading and waiting for more awesomeness.
+Get your Android applications off the ground and running fast with this archetype. This bootstrap should contain everything you need to get going but not so much you \
+have to spend time stripping things out. If you find your self deleting something frequently then it should probably be removed. This application is highly based off o\
+f Jake Whartons's [U2020](https://github.com/JakeWharton/u2020) and has a debug drawer ready and waiting for more awesomeness.
 
 ## Usage
 
@@ -23,7 +23,7 @@ Run:
 
 Filling in the groupId, artifactId, and applicationName. Where groupId is the package you want for your application, artifactId should be your application name with no spaces (ex. my-test-app), and applicationName is the name of your application all one word (ex. MyTestApp).
 
-cd into the directory that was created and run the following
+cd into the directory that was created (my-test-app) and run the following
 
     chmod +x gradlew
     mv gradle.properties.dist gradle.properties
@@ -45,11 +45,11 @@ Before diving in and using this project I suggest you check out and understand t
 
 ## Other Info
 
-The gradle.properties.dist is an example of what your gradle.properties should look like. This helps avoid checking in of release signing passwords. The data in there can be incorrect for debug builds but is still required to be there for gradle to run. The pom.xml is left over from the archetype and my be deleted.
+The gradle.properties.dist is an example of what your gradle.properties should look like. This helps avoid checking in the release signing passwords. The information in the gradle.properties can be incorrect for debug builds but is still required to be there for gradle to run. The pom.xml is left over from the archetype and my be deleted.
 
 ## Contributing
 
-A gradle script has been setup so that all you need to do to add your own code to the starting project is to open up the velcro-app in Android studio and work on it like you would any other Android Project. Assuming you keep the same package and application name (Velcro) you should be able to run `gradle build`. This will copy the files over into their correct location and and archetype variables where required. From this point you can continue on like it's a standard maven archetype for testing and deployment.
+A gradle script has been setup so that all you need to do to add your own code to Velcro is to open up the velcro-app and work on it like you would any other Android project. Assuming you keep the same package and application name (Velcro) you should be able to run `gradle build`. This will copy the files over into their correct location in the archetype project and replace strings with archetype variables where required. From this point you can continue on like it's a standard maven archetype for testing and deployment (`mvn clean install`).
 
 ## License
 
