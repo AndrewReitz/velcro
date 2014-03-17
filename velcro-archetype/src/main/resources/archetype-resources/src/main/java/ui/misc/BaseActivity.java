@@ -14,7 +14,6 @@ import java.util.List;
 
 import dagger.ObjectGraph;
 import icepick.Icepick;
-
 public abstract class BaseActivity extends Activity {
 
     private ObjectGraph activityGraph;

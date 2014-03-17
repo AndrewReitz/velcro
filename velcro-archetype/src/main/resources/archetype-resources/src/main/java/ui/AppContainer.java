@@ -13,7 +13,7 @@ public interface AppContainer {
     /** The root {@link android.view.ViewGroup} into which the activity should place its contents. */
     ViewGroup get(Activity activity, ${applicationName}App app);
 
-    /** An {@link ${package}.ui.AppContainer} which returns the normal activity content view. */
+    /** An {@link AppContainer} which returns the normal activity content view. */
     AppContainer DEFAULT = new AppContainer() {
         @Override public ViewGroup get(Activity activity, ${applicationName}App app) {
             return findById(activity, android.R.id.content);

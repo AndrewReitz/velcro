@@ -3,3 +3,4 @@
 keystorePassword=ThisKeyIsNotSoSecret
 aliasKeyPassword=ThisKeyIsNotSoSecret
 storeFilePath=Path/To/Key/Store
+storeKeyAlias="Velcro"
