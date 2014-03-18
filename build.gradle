@@ -3,7 +3,7 @@ import java.nio.file.Files
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING
 
 ext {
-    DEBUG = true
+    DEBUG = false
 
     /** Folder where the application we are generating the archetype is coming from */
     APP_FOLDER = "velcro-app"
