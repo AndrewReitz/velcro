@@ -17,49 +17,49 @@ import timber.log.Timber;
 
 public class VelcroApp extends Application {
 
-    @Inject ActivityHierarchyServer activityHierarchyServer;
+  @Inject ActivityHierarchyServer activityHierarchyServer;
 
-    private ObjectGraph objectGraph;
+  private ObjectGraph objectGraph;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
+  @Override
+  public void onCreate() {
+    super.onCreate();
 
-        // Logging Setup
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        } else {
-            // Place Prod Logging here
-        }
-
-        // Setup debugging for butterknife
-        ButterKnife.setDebug(BuildConfig.DEBUG);
-
-        buildObjectGraphAndInject();
-
-        registerActivityLifecycleCallbacks(activityHierarchyServer);
+    // Logging Setup
+    if (BuildConfig.DEBUG) {
+      Timber.plant(new Timber.DebugTree());
+    } else {
+      // Place Prod Logging here
     }
 
-    public void buildObjectGraphAndInject() {
-        long start = System.nanoTime();
+    // Setup debugging for butterknife
+    ButterKnife.setDebug(BuildConfig.DEBUG);
 
-        objectGraph = ObjectGraph.create(Modules.list(this));
-        objectGraph.inject(this);
+    buildObjectGraphAndInject();
 
-        long diff = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start);
-        Timber.i("Global object graph creation took %sms", diff);
-    }
+    registerActivityLifecycleCallbacks(activityHierarchyServer);
+  }
 
-    public ObjectGraph getObjectGraph() {
-        return objectGraph;
-    }
+  public void buildObjectGraphAndInject() {
+    long start = System.nanoTime();
 
-    public void inject(@NotNull Object o) {
-        objectGraph.inject(o);
-    }
+    objectGraph = ObjectGraph.create(Modules.list(this));
+    objectGraph.inject(this);
 
-    public static VelcroApp get(@NotNull Context context) {
-        return (VelcroApp) context.getApplicationContext();
-    }
+    long diff = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start);
+    Timber.i("Global object graph creation took %sms", diff);
+  }
+
+  public ObjectGraph getObjectGraph() {
+    return objectGraph;
+  }
+
+  public void inject(@NotNull Object o) {
+    objectGraph.inject(o);
+  }
+
+  public static VelcroApp get(@NotNull Context context) {
+    return (VelcroApp) context.getApplicationContext();
+  }
 
 }

@@ -6,12 +6,12 @@ import com.andrewreitz.velcro.ui.DebugUiModule;
 import dagger.Module;
 
 @Module(
-        addsTo = VelcroModule.class,
-        includes = {
-                DebugUiModule.class,
-                DebugDataModule.class
-        },
-        overrides = true
+    addsTo = VelcroModule.class,
+    includes = {
+        DebugUiModule.class,
+        DebugDataModule.class
+    },
+    overrides = true
 )
 public final class DebugVelcroModule {
 }
