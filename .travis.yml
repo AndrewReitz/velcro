@@ -10,7 +10,10 @@ before_install:
   - curl -L https://raw.github.com/embarkmobile/android-sdk-installer/version-1/android-sdk-installer | bash /dev/stdin --install=$COMPONENTS
   - source ~/.android-sdk-installer/env
 install:
-  - ./velcro-app/gradlew assembleDebug
+  - cd velcro-app/
+  - ./gradlew assembleDebug
+  - cd ../velcro-archetype/
+  - ./gradlew assembleDebug
 
 notifications:
   email: false
