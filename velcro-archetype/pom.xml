@@ -4,7 +4,7 @@
 
     <artifactId>velcro</artifactId>
     <packaging>maven-archetype</packaging>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <name>Velcro Android Archetype</name>
     <description>Awesome Maven archetype for Android</description>
@@ -12,7 +12,7 @@
     <parent>
         <groupId>com.andrewreitz.velcro</groupId>
         <artifactId>velcro-project</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3-SNAPSHOT</version>
 	<relativePath>../pom.xml</relativePath>
     </parent>
 </project>
