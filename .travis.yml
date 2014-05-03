@@ -12,8 +12,6 @@ before_install:
 install:
   - cd velcro-app/
   - ./gradlew assembleDebug
-  - cd ../velcro-archetype/
-  - ./gradlew assembleDebug
 
 notifications:
   email: false
