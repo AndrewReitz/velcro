@@ -5,8 +5,6 @@ import android.app.Application;
 import com.andrewreitz.velcro.data.DataModule;
 import com.andrewreitz.velcro.ui.UiModule;
 
-import org.jetbrains.annotations.NotNull;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -24,7 +22,7 @@ import dagger.Provides;
 public final class VelcroModule {
   private final VelcroApp app;
 
-  public VelcroModule(@NotNull VelcroApp app) {
+  public VelcroModule(VelcroApp app) {
     this.app = app;
   }
 
