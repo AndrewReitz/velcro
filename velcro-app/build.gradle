@@ -26,7 +26,7 @@ repositories {
 dependencies {
   compile 'com.android.support:support-v4:+'
 
-  compile 'com.intellij:annotations:12.0'
+  compile 'com.inkapplications:android-preferences:1.0.+'
 
   compile 'com.jakewharton.timber:timber:2.1.+'
   compile 'com.jakewharton:butterknife:4.0.+'

@@ -2,8 +2,8 @@ package com.andrewreitz.velcro.data;
 
 import android.content.SharedPreferences;
 
-import com.andrewreitz.velcro.data.prefs.BooleanPreference;
-import com.andrewreitz.velcro.data.prefs.IntPreference;
+import com.inkapplications.preferences.BooleanPreference;
+import com.inkapplications.preferences.IntPreference;
 
 import javax.inject.Singleton;
 
