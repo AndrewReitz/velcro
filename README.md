@@ -2,6 +2,8 @@
 
 ## Bootstrap for your Android Projects.
 
+[![Build Status](https://travis-ci.org/pieces029/velcro.svg?branch=refactor)](https://travis-ci.org/pieces029/velcro)
+
 Get your Android applications off the ground and running fast with this archetype. This bootstrap should contain everything you need to get going but not so much you have to spend time stripping things out. If you find your self deleting something frequently then it should probably be removed. This application is highly based off of Jake Whartons's [U2020](https://github.com/JakeWharton/u2020) and has a debug drawer ready and waiting for more awesomeness.
 
 ## Usage
