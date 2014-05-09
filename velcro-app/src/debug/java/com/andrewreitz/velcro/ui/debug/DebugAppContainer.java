@@ -42,6 +42,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Set;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -142,7 +143,7 @@ public class DebugAppContainer implements AppContainer {
           drawerLayout.openDrawer(Gravity.END);
           Toast.makeText(activity, R.string.debug_drawer_welcome, Toast.LENGTH_LONG).show();
         }
-      }, 1000);
+      }, TimeUnit.SECONDS.toMillis(1));
       seenDebugDrawer.set(true);
     }
 
