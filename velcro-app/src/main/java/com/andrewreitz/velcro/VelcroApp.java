@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import dagger.ObjectGraph;
+import hugo.weaving.DebugLog;
 import timber.log.Timber;
 
 public class VelcroApp extends Application {
@@ -23,29 +24,18 @@ public class VelcroApp extends Application {
   public void onCreate() {
     super.onCreate();
 
-    // Logging Setup
-    if (BuildConfig.DEBUG) {
-      Timber.plant(new Timber.DebugTree());
-    } else {
-      // Place Prod Logging here
-    }
-
-    // Setup debugging for butterknife
-    ButterKnife.setDebug(BuildConfig.DEBUG);
+    // Initialize components
+    VelcroInitializer.init();
 
     buildObjectGraphAndInject();
 
     registerActivityLifecycleCallbacks(activityHierarchyServer);
   }
 
+  @DebugLog
   public void buildObjectGraphAndInject() {
-    long start = System.nanoTime();
-
     objectGraph = ObjectGraph.create(Modules.list(this));
     objectGraph.inject(this);
-
-    long diff = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start);
-    Timber.i("Global object graph creation took %sms", diff);
   }
 
   public ObjectGraph getObjectGraph() {

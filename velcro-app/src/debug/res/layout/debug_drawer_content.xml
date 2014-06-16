@@ -38,7 +38,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:src="@drawable/ic_launcher"
-        />
+        tools:ignore="ContentDescription"/>
   </LinearLayout>
 
   <!-- CONTEXTUAL SECTION -->
@@ -50,12 +50,13 @@
       android:text="Contextual Actions"
       android:visibility="gone"
       style="@style/Widget.Velcro.DebugDrawer.Header"
-      />
+      tools:ignore="HardcodedText"/>
 
   <LinearLayout
       android:id="@+id/debug_contextual_list"
       android:layout_columnSpan="2"
       android:layout_gravity="start|end"
+      android:orientation="vertical"
       android:visibility="gone"
       />
 
@@ -66,13 +67,13 @@
       android:layout_gravity="start|end"
       android:text="User Interface"
       style="@style/Widget.Velcro.DebugDrawer.Header"
-      />
+      tools:ignore="HardcodedText"/>
 
   <TextView
       android:layout_gravity="start|end|center_vertical"
       android:text="Animations"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <Spinner
       android:id="@+id/debug_ui_animation_speed"
       android:layout_gravity="start|end|center_vertical"
@@ -82,7 +83,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="Pixel Grid"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <Switch
       android:id="@+id/debug_ui_pixel_grid"
       android:layout_gravity="start|center_vertical"
@@ -93,7 +94,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="Pixel Scale"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <Switch
       android:id="@+id/debug_ui_pixel_ratio"
       android:layout_gravity="start|center_vertical"
@@ -104,7 +105,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="Scalpel"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <Switch
       android:id="@+id/debug_ui_scalpel"
       android:layout_gravity="start|center_vertical"
@@ -115,7 +116,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="Wireframe"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <Switch
       android:id="@+id/debug_ui_scalpel_wireframe"
       android:layout_gravity="start|center_vertical"
@@ -129,13 +130,13 @@
       android:layout_gravity="start|end"
       android:text="Build Information"
       style="@style/Widget.Velcro.DebugDrawer.Header"
-      />
+      tools:ignore="HardcodedText"/>
 
   <TextView
       android:layout_gravity="start|end|center_vertical"
       android:text="Name"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <TextView
       android:id="@+id/debug_build_name"
       android:layout_gravity="start|end|center_vertical"
@@ -146,7 +147,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="Code"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <TextView
       android:id="@+id/debug_build_code"
       android:layout_gravity="start|end|center_vertical"
@@ -157,7 +158,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="SHA"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <TextView
       android:id="@+id/debug_build_sha"
       android:layout_gravity="start|end|center_vertical"
@@ -168,7 +169,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="Date"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <TextView
       android:id="@+id/debug_build_date"
       android:layout_gravity="start|end|center_vertical"
@@ -182,13 +183,13 @@
       android:layout_gravity="start|end"
       android:text="Device Information"
       style="@style/Widget.Velcro.DebugDrawer.Header"
-      />
+      tools:ignore="HardcodedText"/>
 
   <TextView
       android:layout_gravity="start|end|center_vertical"
       android:text="Make"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <TextView
       android:id="@+id/debug_device_make"
       android:layout_gravity="start|end|center_vertical"
@@ -199,7 +200,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="Model"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <TextView
       android:id="@+id/debug_device_model"
       android:layout_gravity="start|end|center_vertical"
@@ -210,7 +211,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="Resolution"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <TextView
       android:id="@+id/debug_device_resolution"
       android:layout_gravity="start|end|center_vertical"
@@ -221,7 +222,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="Density"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <TextView
       android:id="@+id/debug_device_density"
       android:layout_gravity="start|end|center_vertical"
@@ -232,7 +233,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="Release"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <TextView
       android:id="@+id/debug_device_release"
       android:layout_gravity="start|end|center_vertical"
@@ -243,7 +244,7 @@
       android:layout_gravity="start|end|center_vertical"
       android:text="API"
       style="@style/Widget.Velcro.DebugDrawer.RowTitle"
-      />
+      tools:ignore="HardcodedText"/>
   <TextView
       android:id="@+id/debug_device_api"
       android:layout_gravity="start|end|center_vertical"
