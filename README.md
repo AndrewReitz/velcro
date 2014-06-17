@@ -27,7 +27,7 @@ cd into the directory that was created (my-test-app) and run the following
 
     chmod +x gradlew
     mv gradle.properties.dist gradle.properties
-    
+
 Your application is now ready to be imported into Android Studio or run gradle tasks
 
 ## Libraries Included
@@ -37,8 +37,7 @@ Before diving in and using this project I suggest you check out and understand t
 * [Dagger](https://github.com/square/dagger) Dependecy Injector
 * [Butter Knife](https://github.com/JakeWharton/butterknife) View Injector
 * [Icepick](https://github.com/frankiesardo/icepick) Save and Restore State
-* [Guava](https://code.google.com/p/guava-libraries/) Core Google Java Libs
-* [IntelliJ Annotations](https://www.jetbrains.com/idea/documentation/howto.html) @NotNull and @NotNull
+* [Android Preferences](https://github.com/InkApplications/android-preferences) Better Shared Preferences
 * [Timber](https://github.com/JakeWharton/timber) Better Android Logger
 * [Madge](https://github.com/JakeWharton/madge) Asset Debugging
 * [Scalpel](https://github.com/JakeWharton/scalpel) View Debugging
@@ -54,16 +53,15 @@ A gradle script has been setup so that all you need to do to add your own code t
 ## License
 
     Copyright 2014 Andrew Reitz
-	
+
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
-    
+
         http://www.apache.org/licenses/LICENSE-2.0
-    
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-	
