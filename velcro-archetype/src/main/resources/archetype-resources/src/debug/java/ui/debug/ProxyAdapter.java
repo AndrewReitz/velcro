@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import ${package}.data.prefs.StringPreference;
 import ${package}.ui.misc.BindableAdapter;
+import com.inkapplications.preferences.StringPreference;
 
 import static butterknife.ButterKnife.findById;
 
