@@ -24,28 +24,10 @@ repositories {
 }
 
 dependencies {
-<<<<<<< HEAD
-    compile 'com.android.support:support-v4:+'
-
-    compile 'com.google.guava:guava:17.0'
-=======
   compile 'com.android.support:support-v4:+'
->>>>>>> refactor
 
   compile 'com.inkapplications:android-preferences:1.0.+'
 
-<<<<<<< HEAD
-    compile 'com.jakewharton.timber:timber:2.2.+'
-    compile 'com.jakewharton:butterknife:5.0.+'
-    debugCompile 'com.jakewharton.madge:madge:1.1.+'
-    debugCompile 'com.jakewharton.scalpel:scalpel:1.1.+'
-
-    compile 'com.squareup.dagger:dagger:1.2.+'
-    provided 'com.squareup.dagger:dagger-compiler:1.2.+'
-
-    compile 'com.github.frankiesardo:icepick:2.3.+'
-    provided 'com.github.frankiesardo:icepick-processor:2.3.+'
-=======
   compile 'com.jakewharton.timber:timber:2.2.+'
   compile 'com.jakewharton:butterknife:5.0.+'
   debugCompile 'com.jakewharton.madge:madge:1.1.+'
@@ -56,7 +38,6 @@ dependencies {
 
   compile 'com.github.frankiesardo:icepick:2.3.+'
   provided 'com.github.frankiesardo:icepick-processor:2.3.+'
->>>>>>> refactor
 
   compile fileTree(dir: 'libs', include: ['*.jar'])
 }
