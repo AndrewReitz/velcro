@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.andrewreitz.velcro.data.prefs.StringPreference;
 import com.andrewreitz.velcro.ui.misc.BindableAdapter;
+import com.inkapplications.preferences.StringPreference;
 
 import static butterknife.ButterKnife.findById;
 
