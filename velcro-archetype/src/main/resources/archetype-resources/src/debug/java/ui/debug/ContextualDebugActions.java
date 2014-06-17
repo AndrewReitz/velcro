@@ -63,7 +63,7 @@ public class ContextualDebugActions implements ViewGroup.OnHierarchyChangeListen
     if (actions != null) {
       for (DebugAction<? extends View> action : actions) {
         Timber.d("Adding debug action \"%s\" for %s.", action.name(),
-                child.getClass().getSimpleName());
+            child.getClass().getSimpleName());
 
         View button = createButton(action, child);
         buttonMap.put(action, button);
@@ -78,7 +78,7 @@ public class ContextualDebugActions implements ViewGroup.OnHierarchyChangeListen
     if (actions != null) {
       for (DebugAction<? extends View> action : actions) {
         Timber.d("Removing debug action \"%s\" for %s.", action.name(),
-                child.getClass().getSimpleName());
+            child.getClass().getSimpleName());
         contextualListView.removeView(buttonMap.remove(action));
       }
       updateContextualVisibility();
