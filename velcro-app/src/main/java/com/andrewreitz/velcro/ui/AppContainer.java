@@ -1,3 +1,4 @@
+/* From https://github.com/JakeWharton/u2020 */
 package com.andrewreitz.velcro.ui;
 
 import android.app.Activity;
@@ -6,8 +7,6 @@ import android.view.ViewGroup;
 import com.andrewreitz.velcro.VelcroApp;
 
 import static butterknife.ButterKnife.findById;
-
-/** From https://github.com/JakeWharton/u2020 */
 
 /** An indirection which allows controlling the root container used for each activity. */
 public interface AppContainer {
