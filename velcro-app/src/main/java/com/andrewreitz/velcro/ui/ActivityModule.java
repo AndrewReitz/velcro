@@ -26,12 +26,7 @@ public class ActivityModule {
     this.activity = checkNotNull(activity);
   }
 
-  /**
-   * Allow the activity context to be injected but require that it be annotated with
-   * {@link ForActivity } to explicitly
-   * differentiate it from application context.
-   */
-  @Provides @Singleton @ForActivity Context provideActivityContext() {
+  @Provides @Singleton Activity provideActivityContext() {
     return activity;
   }
 }

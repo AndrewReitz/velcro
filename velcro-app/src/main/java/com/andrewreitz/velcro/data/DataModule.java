@@ -3,9 +3,6 @@ package com.andrewreitz.velcro.data;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
-import com.andrewreitz.velcro.ForApplication;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -16,7 +13,7 @@ import dagger.Provides;
     library = true
 )
 public final class DataModule {
-  @Provides @Singleton SharedPreferences provideSharedPreferences(@ForApplication Application app) {
+  @Provides @Singleton SharedPreferences provideSharedPreferences(Application app) {
     return PreferenceManager.getDefaultSharedPreferences(app);
   }
 }

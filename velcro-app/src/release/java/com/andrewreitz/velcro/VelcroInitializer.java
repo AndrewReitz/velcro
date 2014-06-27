@@ -1,12 +1,14 @@
 package com.andrewreitz.velcro;
 
-import android.content.Context;
+import android.app.Application;
+
+import javax.inject.Inject;
 
 final class VelcroInitializer {
-  private final Context context;
+  private final Application application;
 
-  @Inject VelcroInitializer(Context context) {
-    this.context = context;
+  @Inject VelcroInitializer(Application application) {
+    this.application = application;
   }
 
   /** Init all things release here */
