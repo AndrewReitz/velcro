@@ -1,12 +1,20 @@
 package com.andrewreitz.velcro;
 
-import butterknife.ButterKnife;
+import android.content.Context;
+
+import javax.inject.Inject;
+
 import timber.log.Timber;
 
 final class VelcroInitializer {
+  private Context context;
+
+  @Inject VelcroInitializer(Context context) {
+    this.context = context;
+  }
+
   /** Init all things debug here */
-  static void init() {
+  void init() {
     Timber.plant(new Timber.DebugTree());
-    ButterKnife.setDebug(true);
   }
 }

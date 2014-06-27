@@ -17,19 +17,16 @@ import timber.log.Timber;
 public class VelcroApp extends Application {
 
   @Inject ActivityHierarchyServer activityHierarchyServer;
+  @Inject VelcroInitializer initializer;
 
   private ObjectGraph objectGraph;
 
   @Override
   public void onCreate() {
     super.onCreate();
-
-    // Initialize components
-    VelcroInitializer.init();
-
     buildObjectGraphAndInject();
-
     registerActivityLifecycleCallbacks(activityHierarchyServer);
+    initializer.init();
   }
 
   @DebugLog
