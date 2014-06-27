@@ -11,7 +11,7 @@ final class VelcroInitializer {
 
   /** Init all things release here */
   void init() {
-    /* Ex. Timber.plant(new CrashReportingTree());
+    /* Ex. Timber.plant(new CrashReportingTree()); */
   }
 }
 
