@@ -19,10 +19,6 @@ libraryDependencies ++= {
   )
 }
 
-unmanagedResourceDirectories in Compile <++= baseDirectory {
-  base => Seq(base / "src/main/www")
-}
-
 //Revolver.enableDebugging(port = 5005, suspend = true)
 
 Revolver.settings

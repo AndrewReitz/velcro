@@ -12,7 +12,7 @@ trait StaticResources extends HttpService {
       complete(StatusCodes.NotFound)
     } ~
     path(Rest) {
-      path => getFromResource("%s" format path)
+      path => getFromResource("www/%s" format path)
     }
   }
 }
