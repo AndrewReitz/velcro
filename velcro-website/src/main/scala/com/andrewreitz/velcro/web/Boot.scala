@@ -8,5 +8,9 @@ object Boot extends App {
   implicit val system = ActorSystem("on-spray-can")
   val service = system.actorOf(Props[WebServiceActor], "velcro-website-service")
 
-  IO(Http) ! Http.Bind(service, interface = "0.0.0.0", port = 8080)
+  import com.typesafe.config._
+  val conf = ConfigFactory.load()
+  val serverPort = conf.getInt("spray.can.server.port")
+
+  IO(Http) ! Http.Bind(service, interface = "0.0.0.0", port = serverPort)
 }
