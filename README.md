@@ -12,6 +12,20 @@ and has a debug drawer ready and waiting for more awesomeness.
 
 ## Usage
 
+### Website
+
+The easiest way to get started is with the [website](http://velcro.andrewreitz.com).
+
+1. Fill in Application Name and Package
+1. Unzip the downloaded generated project
+1. `chmod +x gradlew && mv gradle.properties.dist gradle.properties`
+1. Get editing in your favorite editor
+
+(The website is looking for a better home. If anyone has a place that is up all the time and can run a .jar file please 
+let me know)
+
+### Command line
+
 You will need Maven installed to use this archetype
 
 Run:
