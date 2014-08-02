@@ -38,7 +38,7 @@ ext {
 
 defaultTasks 'clean', 'build'
 
-task clean << {
+task cleanArchetype   {
     def files = files { file(ARCHETYPE_FOLDER).listFiles() }
     files.each { File file ->
         if (!KEEP_FILES.contains(file.name)) {
@@ -48,8 +48,7 @@ task clean << {
     }
 }
 
-task build << {
-
+task copyToArchetype {
     // copy explicitly the git ignore because gradle copy forgets it...
     def gitIgnore = new File(APP_FOLDER, ".gitignore")
     Files.copy(gitIgnore.toPath(), new File(ARCHETYPE_FOLDER, gitIgnore.name).toPath(), REPLACE_EXISTING)
