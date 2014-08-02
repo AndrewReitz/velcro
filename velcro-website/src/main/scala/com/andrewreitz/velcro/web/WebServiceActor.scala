@@ -31,7 +31,7 @@ trait VelcroGeneration extends HttpService {
 
   implicit def executionContext = actorRefFactory.dispatcher
 
-  implicit val timeout = Timeout(10, TimeUnit.SECONDS)
+  implicit val timeout = Timeout(2, TimeUnit.MINUTES)
 
   val worker = actorRefFactory.actorOf(Props[CreateVelcroActor], "worker")
 
