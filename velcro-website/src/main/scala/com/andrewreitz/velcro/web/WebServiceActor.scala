@@ -1,6 +1,5 @@
 package com.andrewreitz.velcro.web
 
-import java.io.File
 import java.util.concurrent.TimeUnit
 
 import akka.actor.{Actor, Props}
@@ -8,8 +7,8 @@ import akka.pattern.ask
 import akka.util.Timeout
 import com.andrewreitz.velcro.web.CreateVelcroActor.{Create, Ok}
 import spray.http._
-import spray.routing._
 import spray.httpx.marshalling._
+import spray.routing._
 
 class WebServiceActor extends Actor with VelcroGeneration with StaticResources {
   def actorRefFactory = context
@@ -32,14 +31,17 @@ trait VelcroGeneration extends HttpService {
 
   implicit def executionContext = actorRefFactory.dispatcher
 
-  implicit val timeout = Timeout(100, TimeUnit.SECONDS)
+  implicit val timeout = Timeout(10, TimeUnit.SECONDS)
 
   val worker = actorRefFactory.actorOf(Props[CreateVelcroActor], "worker")
 
   val generator = post {
     path("generate") {
-      formFields('groupId, 'appName, 'artifactId) { (groupId, appName, artifactId) =>
-        val pi = new PackageInfo(appName, groupId, artifactId)
+      formFields('groupId, 'appName) { (groupId: String, appName: String) =>
+        val applicationName = appName.replace("-", " ").replaceAll("[^a-zA-Z0-9]", "")
+          .split(" ").map(x => x.charAt(0).toUpper + x.substring(1)).mkString
+
+        val pi = new PackageInfo(applicationName, groupId, applicationName)
         doCreate(pi)
       }
     }
