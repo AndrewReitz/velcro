@@ -34,7 +34,7 @@ class CreateVelcroActor extends Actor {
       tempDir.toFile.deleteOnExit()
 
       // Use maven to generate a new velcro project with the values provided
-      Process(s"mvn archetype:generate -B -DarchetypeArtifactId=velcro -DarchetypeGroupId=com.andrewreitz.velcro -DarchetypeVersion=2.1.0 -DgroupId=${pi.groupId} -DartifactId=${pi.artifactId} -DapplicationName=${pi.appName} -Dversion=1.0", tempDir.toFile).run(connectInput = false).exitValue()
+      Process(s"mvn archetype:generate -B -DarchetypeArtifactId=velcro -DarchetypeGroupId=com.andrewreitz.velcro -DarchetypeVersion=2.1.1 -DgroupId=${pi.groupId} -DartifactId=${pi.artifactId} -DapplicationName=${pi.appName} -Dversion=1.0", tempDir.toFile).run(connectInput = false).exitValue()
 
       // Get the generated maven file
       val mavenOutput = tempDir.toFile.listFiles()(0)
