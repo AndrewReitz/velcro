@@ -18,6 +18,7 @@ class WebServiceActor extends Actor with VelcroGeneration with StaticResources {
 
 trait VelcroGeneration extends HttpService {
 
+  /** Tells the complete method how to marshall the ZipInfo object */
   implicit val zipFileMarshaller: ToResponseMarshaller[ZipInfo] =
     ToResponseMarshaller.of(MediaTypes.`application/zip`) { (zi: ZipInfo, _, ctx) =>
       ctx.marshalTo(
@@ -47,6 +48,9 @@ trait VelcroGeneration extends HttpService {
     }
   }
 
+  /**
+   * Creates the zip file of the maven project in a separate actor
+   */
   def doCreate(pi: PackageInfo) = {
     val response = (worker ? Create(pi))
       .mapTo[Ok]
