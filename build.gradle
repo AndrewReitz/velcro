@@ -36,9 +36,7 @@ ext {
     FILTER_EXTENSIONS = [".xml", ".java", ".md", ".dist"]
 }
 
-defaultTasks 'clean', 'build'
-
-task clean << {
+task cleanArchetype(type: Delete) << {
     def files = files { file(ARCHETYPE_FOLDER).listFiles() }
     files.each { File file ->
         if (!KEEP_FILES.contains(file.name)) {
@@ -48,8 +46,7 @@ task clean << {
     }
 }
 
-task build << {
-
+task copyToArchetype(type: Copy) {
     // copy explicitly the git ignore because gradle copy forgets it...
     def gitIgnore = new File(APP_FOLDER, ".gitignore")
     Files.copy(gitIgnore.toPath(), new File(ARCHETYPE_FOLDER, gitIgnore.name).toPath(), REPLACE_EXISTING)
@@ -89,6 +86,15 @@ task build << {
             }
         }
     }
+}
+
+task snapshotArchetype(type:Exec) {
+  commandLine "mvn", "clean", "deploy"
+}
+
+task releaseArchetype(type:Exec) {
+  // todo figure out how to pass gpg pass in
+  commandLine "mvn", "release:clean", "release:prepare", "release:perform"
 }
 
 def log(message) {

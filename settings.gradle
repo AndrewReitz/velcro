@@ -1,0 +1,2 @@
+include ':velcro-app'
+rootProject.name = 'velcro-parent'

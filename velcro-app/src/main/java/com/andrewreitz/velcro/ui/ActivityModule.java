@@ -1,7 +1,6 @@
 package com.andrewreitz.velcro.ui;
 
 import android.app.Activity;
-import android.content.Context;
 
 import com.andrewreitz.velcro.VelcroModule;
 
@@ -9,8 +8,6 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-
-import static com.google.common.base.Preconditions.checkNotNull;
 
 @Module(
     injects = {
@@ -23,7 +20,7 @@ public class ActivityModule {
   private final Activity activity;
 
   public ActivityModule(Activity activity) {
-    this.activity = checkNotNull(activity);
+    this.activity = activity;
   }
 
   @Provides @Singleton Activity provideActivityContext() {

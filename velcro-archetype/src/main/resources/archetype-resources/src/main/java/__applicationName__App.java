@@ -17,19 +17,16 @@ import timber.log.Timber;
 public class ${applicationName}App extends Application {
 
   @Inject ActivityHierarchyServer activityHierarchyServer;
+  @Inject ${applicationName}Initializer initializer;
 
   private ObjectGraph objectGraph;
 
   @Override
   public void onCreate() {
     super.onCreate();
-
-    // Initialize components
-    ${applicationName}Initializer.init();
-
     buildObjectGraphAndInject();
-
     registerActivityLifecycleCallbacks(activityHierarchyServer);
+    initializer.init();
   }
 
   @DebugLog
