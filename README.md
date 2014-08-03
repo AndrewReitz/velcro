@@ -2,6 +2,8 @@
 
 ## Bootstrap for your Android Projects.
 
+![Velcro Image](velcro-android.svg)
+
 [![Build Status](https://travis-ci.org/pieces029/velcro.svg?branch=refactor)](https://travis-ci.org/pieces029/velcro)
 
 Get your Android applications off the ground and running fast with this archetype. This bootstrap 
