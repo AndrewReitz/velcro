@@ -2,7 +2,7 @@
 
 ## Bootstrap for your Android Projects.
 
-![Velcro Image](velcro-android.svg)
+![Velcro Image](velcro-android.png)
 
 [![Build Status](https://travis-ci.org/pieces029/velcro.svg?branch=refactor)](https://travis-ci.org/pieces029/velcro)
 
