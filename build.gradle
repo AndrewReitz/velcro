@@ -48,8 +48,8 @@ task cleanArchetype(type: Delete) << {
 
 task copyToArchetype(type: Copy) {
     // copy explicitly the git ignore because gradle copy forgets it...
-    def gitIgnore = new File((String) APP_FOLDER, ".gitignore")
-    Files.copy(gitIgnore.toPath(), new File(ARCHETYPE_FOLDER, gitIgnore.name).toPath(), REPLACE_EXISTING)
+    File gitIgnore = new File((String) APP_FOLDER, ".gitignore")
+    Files.copy(gitIgnore.toPath(), new File((String) ARCHETYPE_FOLDER, gitIgnore.name).toPath(), REPLACE_EXISTING)
 
     copy {
         from APP_FOLDER
