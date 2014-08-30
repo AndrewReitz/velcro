@@ -26,10 +26,10 @@ repositories {
 dependencies {
   compile 'com.android.support:support-v4:20.+'
 
-  compile 'com.inkapplications:android-preferences:1.0.+'
+  compile 'com.inkapplications:android-preferences:1.1.+'
 
-  compile 'com.jakewharton.timber:timber:2.2.+'
-  compile 'com.jakewharton:butterknife:5.0.+'
+  compile 'com.jakewharton.timber:timber:2.4.+'
+  compile 'com.jakewharton:butterknife:5.1.+'
   debugCompile 'com.jakewharton.madge:madge:1.1.+'
   debugCompile 'com.jakewharton.scalpel:scalpel:1.1.+'
 
