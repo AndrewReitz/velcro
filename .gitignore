@@ -1,3 +1,6 @@
+# Ignore auto generated sources for archetype
+velcro-archetype/src/main/resources/archetype-resources
+
 # built application files
 *.apk
 *.ap_
