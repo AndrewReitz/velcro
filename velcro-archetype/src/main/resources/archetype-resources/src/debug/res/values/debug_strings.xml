@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="development_settings">Development Settings</string>
+    <string name="debug_drawer_welcome">Debug settings are available in this drawer.</string>
+</resources>
