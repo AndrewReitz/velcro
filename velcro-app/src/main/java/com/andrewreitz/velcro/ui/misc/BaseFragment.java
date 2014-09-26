@@ -12,6 +12,7 @@ public abstract class BaseFragment extends Fragment {
     super.onActivityCreated(savedInstanceState);
     // Restore objects saved with Icepick
     Icepick.restoreInstanceState(this, savedInstanceState);
+    BaseActivity.get(this).inject(this);
   }
 
   @Override public void onSaveInstanceState(Bundle outState) {
