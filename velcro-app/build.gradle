@@ -1,6 +1,6 @@
 buildscript {
   repositories {
-    mavenCentral()
+    jcenter()
   }
   dependencies {
     classpath 'com.android.tools.build:gradle:0.12.+'
@@ -20,11 +20,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'hugo'
 
 repositories {
-  mavenCentral()
+  jcenter()
 }
 
 dependencies {
   compile 'com.android.support:support-v4:20.+'
+  compile 'com.android.support:support-annotations:20.+'
 
   compile 'com.inkapplications:android-preferences:1.1.+'
 
