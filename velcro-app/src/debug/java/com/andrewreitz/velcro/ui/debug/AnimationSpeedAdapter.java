@@ -36,10 +36,6 @@ class AnimationSpeedAdapter extends BindableAdapter<Integer> {
     return VALUES[position];
   }
 
-  @Override public long getItemId(int position) {
-    return position;
-  }
-
   @Override public View newView(LayoutInflater inflater, int position, ViewGroup container) {
     return inflater.inflate(android.R.layout.simple_spinner_item, container, false);
   }

@@ -38,10 +38,6 @@ class EnumAdapter<T extends Enum<T>> extends BindableAdapter<T> {
     return enumConstants[position - nullOffset];
   }
 
-  @Override public final long getItemId(int position) {
-    return position;
-  }
-
   @Override
   public final View newView(LayoutInflater inflater, int position, ViewGroup container) {
     return inflater.inflate(android.R.layout.simple_spinner_item, container, false);

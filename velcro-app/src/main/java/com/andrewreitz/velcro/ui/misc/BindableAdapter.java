@@ -35,6 +35,11 @@ public abstract class BindableAdapter<T> extends BaseAdapter {
     return view;
   }
 
+  /** Default implementation doesn't really do much. Override to get different functionality */
+  @Override public long getItemId(int position) {
+    return 0;
+  }
+
   /** Create a new instance of a view for the specified position. */
   public abstract View newView(LayoutInflater inflater, int position, ViewGroup container);
 
