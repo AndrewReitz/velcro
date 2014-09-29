@@ -35,7 +35,7 @@ Run:
     mvn archetype:generate \
     -DarchetypeArtifactId=velcro \
     -DarchetypeGroupId=com.andrewreitz.velcro \
-    -DarchetypeVersion=2.3.0 \
+    -DarchetypeVersion=2.3.1 \
     -DgroupId={your.package.name.here} \
     -DartifactId={app-name} \
     -DapplicationName={AppName} \
