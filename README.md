@@ -4,7 +4,7 @@
 
 ![Velcro Image](velcro-android.png)
 
-[![Build Status](https://travis-ci.org/pieces029/velcro.svg?branch=refactor)](https://travis-ci.org/pieces029/velcro)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Velcro-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1027)
 
 Get your Android applications off the ground and running fast with this archetype. This bootstrap
 should contain everything you need to get going but not so much you have to spend time stripping
