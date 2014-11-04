@@ -35,7 +35,7 @@ Run:
     mvn archetype:generate \
     -DarchetypeArtifactId=velcro \
     -DarchetypeGroupId=com.andrewreitz.velcro \
-    -DarchetypeVersion=2.3.1 \
+    -DarchetypeVersion=3.0.0 \
     -DgroupId={your.package.name.here} \
     -DartifactId={app-name} \
     -DapplicationName={AppName} \
@@ -48,7 +48,6 @@ applicationName is the name of your application all one word (ex. MyTestApp).
 cd into the directory that was created (my-test-app) and run the following
 
     chmod +x gradlew
-    mv gradle.properties.dist gradle.properties
 
 Your application is now ready to be imported into Android Studio or run gradle tasks
 
