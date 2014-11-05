@@ -1,3 +1,10 @@
+# Change Log
+
+# 3.0.3 *(2014-11-03)*
+
+* Setup to work for Lollipop
+* Removed need to copy gradle.properties.dist to gradle.properties
+
 # 2.1.0
 
 * Created CHANGELOG

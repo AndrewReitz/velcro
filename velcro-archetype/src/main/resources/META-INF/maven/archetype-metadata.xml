@@ -64,7 +64,7 @@
         </fileSet>
 
         <fileSet filtered="false" encoding="UTF-8">
-            <directory>gradle/wrapper</directory>
+            <directory>gradle</directory>
             <includes>
                 <include>**/*</include>
             </includes>
@@ -79,7 +79,6 @@
             <directory/>
             <includes>
                 <include>build.gradle</include>
-                <include>gradle.properties.dist</include>
                 <include>README.md</include>
                 <include>.gitignore</include>
             </includes>

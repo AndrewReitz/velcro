@@ -72,14 +72,12 @@ public class DebugAppContainer implements AppContainer {
   Activity activity;
   Context drawerContext;
 
-  @Inject public DebugAppContainer(
-      @PixelGridEnabled BooleanPreference pixelGridEnabled,
+  @Inject public DebugAppContainer(@PixelGridEnabled BooleanPreference pixelGridEnabled,
       @PixelRatioEnabled BooleanPreference pixelRatioEnabled,
       @AnimationSpeed IntPreference animationSpeed,
       @ScalpelEnabled BooleanPreference scalpelEnabled,
       @ScalpelWireframeEnabled BooleanPreference scalpelWireframeEnabled,
-      @SeenDebugDrawer BooleanPreference seenDebugDrawer
-  ) {
+      @SeenDebugDrawer BooleanPreference seenDebugDrawer) {
     this.scalpelEnabled = scalpelEnabled;
     this.scalpelWireframeEnabled = scalpelWireframeEnabled;
     this.seenDebugDrawer = seenDebugDrawer;
@@ -92,7 +90,6 @@ public class DebugAppContainer implements AppContainer {
   @InjectView(R.id.debug_content) ViewGroup content;
 
   @InjectView(R.id.madge_container) MadgeFrameLayout madgeFrameLayout;
-  @InjectView(R.id.debug_content) ScalpelFrameLayout scalpelFrameLayout;
 
   @InjectView(R.id.debug_contextual_title) View contextualTitleView;
   @InjectView(R.id.debug_contextual_list) LinearLayout contextualListView;
@@ -207,6 +204,7 @@ public class DebugAppContainer implements AppContainer {
       }
     });
 
+    final ScalpelFrameLayout scalpelFrameLayout = (ScalpelFrameLayout) content;
     boolean scalpel = scalpelEnabled.get();
     scalpelFrameLayout.setLayerInteractionEnabled(scalpel);
     uiScalpelView.setChecked(scalpel);
@@ -290,7 +288,7 @@ public class DebugAppContainer implements AppContainer {
   }
 
   private static String getSizeString(long bytes) {
-    String[] units = new String[]{"B", "KB", "MB", "GB"};
+    String[] units = new String[] { "B", "KB", "MB", "GB" };
     int unit = 0;
     while (bytes >= 1024) {
       bytes /= 1024;
