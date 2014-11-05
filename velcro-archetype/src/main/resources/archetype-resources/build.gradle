@@ -1,0 +1,93 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:0.14.+'
+    classpath 'com.jakewharton.hugo:hugo-plugin:1.1.+'
+    classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
+  }
+}
+
+// Manifest version information!
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 0
+def versionBuild = 0
+
+apply from: 'gradle/signing.gradle'
+apply plugin: 'android-sdk-manager'
+apply plugin: 'com.android.application'
+apply plugin: 'hugo'
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile 'com.android.support:support-v4:21.0.+'
+  compile 'com.android.support:support-annotations:21.0.+'
+
+  compile 'com.inkapplications:android-preferences:1.1.+'
+
+  compile 'com.jakewharton.timber:timber:2.4.+'
+  compile 'com.jakewharton:butterknife:6.0.+'
+  debugCompile 'com.jakewharton.madge:madge:1.1.+'
+  debugCompile 'com.jakewharton.scalpel:scalpel:1.1.+'
+
+  compile 'com.squareup.dagger:dagger:1.2.+'
+  provided 'com.squareup.dagger:dagger-compiler:1.2.+'
+
+  compile 'com.github.frankiesardo:icepick:2.3.+'
+  provided 'com.github.frankiesardo:icepick-processor:2.3.+'
+
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+def buildTime = new Date().format("yyyy-MM-dd'T'HH:mm'Z'", TimeZone.getTimeZone("UTC"))
+
+android {
+  compileSdkVersion 21
+  buildToolsVersion "21.1.0"
+
+  defaultConfig {
+    minSdkVersion 15
+    targetSdkVersion 21
+
+    versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
+    versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+
+    buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
+    buildConfigField "String", "BUILD_TIME", "\"${buildTime}\""
+  }
+
+  signingConfigs {
+    release {
+      storeFile file(storeFilePath)
+      storePassword keystorePassword
+      keyAlias storeKeyAlias
+      keyPassword aliasKeyPassword
+    }
+  }
+
+  buildTypes {
+    debug {
+      applicationIdSuffix '.dev'
+      versionNameSuffix '-dev'
+    }
+
+    release {
+      signingConfig signingConfigs.release
+    }
+  }
+
+  lintOptions {
+    abortOnError false
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_7
+    targetCompatibility JavaVersion.VERSION_1_7
+  }
+}
