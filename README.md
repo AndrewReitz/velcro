@@ -20,7 +20,7 @@ The easiest way to get started is with the [website](http://velcro.andrewreitz.c
 
 1. Fill in Application Name and Package
 1. Unzip the downloaded generated project
-1. `chmod +x gradlew && mv gradle.properties.dist gradle.properties`
+1. `chmod +x gradlew`
 1. Get editing in your favorite editor
 
 (The website is looking for a better home. If anyone has a place that is up all the time and can run a .jar file please
