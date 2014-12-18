@@ -1,2 +1,0 @@
-//include ':velcro-app' #currently messing with Android Studio
-rootProject.name = 'velcro-parent'
