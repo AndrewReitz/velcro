@@ -1,0 +1,6 @@
+// Defines signing properties for signing the release build
+
+ext.keystorePassword = project.hasProperty('keystorePassword')?project.getProperty('keystorePassword'):System.getenv('KEYSTORE_PASSWORD')?:''
+ext.aliasKeyPassword = project.hasProperty('aliasKeyPassword')?project.getProperty('aliasKeyPassword'):System.getenv('ALIAS_KEY_PASSWORD')?:''
+ext.storeFilePath = project.hasProperty('storeFilePath')?project.getProperty('storeFilePath'):System.getenv('STORE_FILE_PATH')?:'.'
+ext.storeKeyAlias = project.hasProperty('storeKeyAlias')?project.getProperty('storeKeyAlias'):System.getenv('STORE_KEY_ALIAS')?:''
