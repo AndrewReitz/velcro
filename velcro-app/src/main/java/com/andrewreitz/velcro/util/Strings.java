@@ -26,11 +26,8 @@ public final class Strings {
     if (isBlank(string)) {
       return "";
     }
-    char first = string.charAt(0);
-    if (Character.isUpperCase(first)) {
-      return string;
-    } else {
-      return Character.toUpperCase(first) + string.substring(1);
-    }
+
+    char first = Character.toUpperCase(string.charAt(0));
+    return Character.toUpperCase(first) + string.length() > 1 ? string.substring(1) : "";
   }
 }
