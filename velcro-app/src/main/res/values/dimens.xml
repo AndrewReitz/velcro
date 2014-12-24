@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_layout_padding">16dp</dimen>
+    <dimen name="default_layout_margin">16dp</dimen>
+    <!-- Add Other Dimensions Here -->
+</resources>
