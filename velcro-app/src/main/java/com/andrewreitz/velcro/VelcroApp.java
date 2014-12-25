@@ -39,5 +39,4 @@ public class VelcroApp extends Application {
   public static VelcroApp get(Context context) {
     return (VelcroApp) context.getApplicationContext();
   }
-
 }

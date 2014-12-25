@@ -1,83 +1,62 @@
-import java.nio.file.Files
-
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING
-
 ext {
-  DEBUG = false
-
   /** Folder where the application we are generating the archetype is coming from */
   APP_FOLDER = "velcro-app"
 
   /** The resources folder inside the archetype to place the app files */
-  ARCHETYPE_FOLDER = "velcro-lazybones/src/templates"
+  ARCHETYPE_FOLDER = "velcro-lazybones/templates/velcro"
 
   /** App Name needs to be filtered out of files and replaced with ${applicationName} */
   FILTER_APP_NAME = "Velcro"
 
   /** What the application name should be replaced with. This value is defined in archetype-metadata.xml */
-  APP_NAME_REPLACE = "\${applicationName}"
-
-  /** Replaces the application name in file names with this */
-  APP_NAME_FILENAME_REPLACE = "__applicationName__"
+  APP_NAME_REPLACE = "{{applicationName}}"
 
   /** Package value that needs to be filtered out and replaced with archetype variable */
   FILTER_PACKAGE = "com.andrewreitz.velcro"
 
-  /** Standard archetype package variable */
-  PACKAGE_REPLACE = "\${package}"
+  /** Package variable. */
+  PACKAGE_REPLACE = "{{packageName}}"
 
   /** files to be kept when doing a clean. These are setup specific to the archetype */
-  KEEP_FILES = ["README.md", "pom.xml"]
-
-  /** Any path that contains this path we need to remove it so it ends up in the java folder */
-  REWRITE_PATH = "/com/andrewreitz/velcro"
+  KEEP_FILES = ["README.md", "settings.gradle", 'lazybones.groovy', 'VERSION']
 
   /** Files with these extensions have values that should be replaced with archetype variable */
-  FILTER_EXTENSIONS = [".xml", ".java", ".md", ".dist"]
+  FILTER_EXTENSIONS = [".xml", ".java", ".md"]
 }
 
-task cleanArchetype(type: Delete) << {
+task cleanLazybones(type: Delete) {
   description = "Clean the velcro-lazybones folder."
 
-  def files = files { file(ARCHETYPE_FOLDER).listFiles() }
-  files.each { File file ->
-    if (!KEEP_FILES.contains(file.name)) {
-      log "Delete $file"
-      delete file
+  doFirst {
+    def files = files { file(ARCHETYPE_FOLDER).listFiles() }
+    files.each { File file ->
+      if (!KEEP_FILES.contains(file.name)) {
+        logger.debug("Delete $file")
+        delete file
+      }
     }
   }
 }
 
-task copyToArchetype(type: Copy) {
+task copyToLazybones(type: Copy) {
   description = "Copy velcro-app to velcro-lazybones."
 
-  copy {
+  def copySpec = project.copySpec {
     from APP_FOLDER
     into ARCHETYPE_FOLDER
-    includeEmptyDirs true
     eachFile { file ->
 
       // Skip trying to copy a file we save
-      for (name in KEEP_FILES) {
+      KEEP_FILES.each { name ->
         if (file.name == name) {
           file.exclude()
-          return
+          return;
         }
       }
 
-      def path = file.path
-      if (path.contains(REWRITE_PATH)) {
-        log "Chaning path of $file"
-        file.setPath(path.replace(REWRITE_PATH, ""))
-      }
-
-      def name = file.name
-      if (name.contains(FILTER_APP_NAME)) {
-        file.setName(name.replace(FILTER_APP_NAME, APP_NAME_FILENAME_REPLACE))
-      }
 
       // Only filter specific files, images and binaries will become corrupt
-      for (ext in FILTER_EXTENSIONS) {
+      for (String ext in FILTER_EXTENSIONS) {
         if (file.name.toLowerCase().endsWith(ext)) {
           filter {
             it.replace(FILTER_APP_NAME, APP_NAME_REPLACE).replace(FILTER_PACKAGE, PACKAGE_REPLACE)
@@ -86,10 +65,8 @@ task copyToArchetype(type: Copy) {
       }
     }
   }
+
+  into '.'
+  with copySpec
 }
 
-def log(message) {
-  if (DEBUG) {
-    println message
-  }
-}
