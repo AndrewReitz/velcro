@@ -3,7 +3,7 @@ ext {
   APP_FOLDER = "velcro-app"
 
   /** The resources folder inside the archetype to place the app files */
-  ARCHETYPE_FOLDER = "velcro-lazybones/templates/velcro"
+  LAZYBONES_FOLDER = "velcro-lazybones/templates/velcro"
 
   /** App Name needs to be filtered out of files and replaced with ${applicationName} */
   FILTER_APP_NAME = "Velcro"
@@ -28,7 +28,7 @@ task cleanLazybones(type: Delete) {
   description = "Clean the velcro-lazybones folder."
 
   doFirst {
-    def files = files { file(ARCHETYPE_FOLDER).listFiles() }
+    def files = files { file(LAZYBONES_FOLDER).listFiles() }
     files.each { File file ->
       if (!KEEP_FILES.contains(file.name)) {
         logger.debug("Delete $file")
@@ -43,7 +43,7 @@ task copyToLazybones(type: Copy) {
 
   def copySpec = project.copySpec {
     from APP_FOLDER
-    into ARCHETYPE_FOLDER
+    into LAZYBONES_FOLDER
     eachFile { file ->
 
       // Skip trying to copy a file we save

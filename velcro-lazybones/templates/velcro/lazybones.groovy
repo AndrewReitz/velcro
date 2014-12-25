@@ -10,15 +10,18 @@ import uk.co.cacoethes.util.NameType
 import uk.co.cacoethes.handlebars.HandlebarsTemplateEngine
 import groovy.io.FileType
 
+// Files with this name need to be replaced.
+static final String FILE_FILTER = "Velcro"
+
 // Set handle bar template engine as the defule engine.
 registerDefaultEngine new HandlebarsTemplateEngine()
 
 def props = [:]
 props.packageName = ask("Define value for 'package' [com.example]: ", "com.example", "packageName")
 
-def applicationNameInput = ask("Define value for 'applicationName' [ExampleApp]: ", "ExampleApp", "applicationName").capitalize()
-def gradleProjectName = transformText(applicationNameInput, from: NameType.CAMEL_CASE, to: NameType.HYPHENATED)
-def applicationName = transformText(applicationNameInput, from: NameType.HYPHENATED, to: NameType.CAMEL_CASE)
+String applicationNameInput = ask("Define value for 'applicationName' [ExampleApp]: ", "ExampleApp", "applicationName").capitalize()
+String gradleProjectName = transformText(applicationNameInput, from: NameType.CAMEL_CASE, to: NameType.HYPHENATED)
+String applicationName = transformText(applicationNameInput, from: NameType.HYPHENATED, to: NameType.CAMEL_CASE)
 props.applicationName = applicationName
 props.projectName = gradleProjectName
 
@@ -26,31 +29,14 @@ processTemplates "src/**/*.java", props
 processTemplates "src/**/*.xml", props
 processTemplates "settings.gradle", props
 
-// Ask For A Licence Header File
-// TODO
-enum License {
-  APACHE2("", ""),
-  MIT("", ""),
-  NONE("none", "");
-
-  private final String name;
-  private final String header;
-
-  License(String name, String header) {
-    this.name = name;
-    this.header = header;
-  }
-}
-
 // Move velcro-app.gradle to build.gradle
-FileUtils.moveFile(new File(projectDir, "velcro-app.gradle"), new File(projectDir, "${gradleProjectName}.gradle"))
+File srcFile = new File(projectDir, "velcro-app.gradle")
+File destFile = new File(projectDir, "${gradleProjectName}.gradle")
+FileUtils.moveFile(srcFile, destFile)
 
-println "HERE 1"
 projectDir.eachFileRecurse (FileType.FILES) { file ->
-  println "HERE $file"
-  if (file.name.contains("Velcro")) {
-    println "Found a match: $file"
-    def destFile = new File(file.parent, file.name.replace("Velcro", applicationName))
+  if (file.name.contains(FILE_FILTER)) {
+    destFile = new File(file.parent, file.name.replace(FILE_FILTER, applicationName))
     FileUtils.moveFile(file, destFile)
   }
 }
