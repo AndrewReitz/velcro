@@ -11,7 +11,7 @@ import uk.co.cacoethes.handlebars.HandlebarsTemplateEngine
 import groovy.io.FileType
 
 // Files with this name need to be replaced.
-static final String FILE_FILTER = "Velcro"
+final String FILE_FILTER = "Velcro"
 
 // Set handle bar template engine as the defule engine.
 registerDefaultEngine new HandlebarsTemplateEngine()
@@ -39,4 +39,15 @@ projectDir.eachFileRecurse (FileType.FILES) { file ->
     destFile = new File(file.parent, file.name.replace(FILE_FILTER, applicationName))
     FileUtils.moveFile(file, destFile)
   }
+}
+
+def getPackageDir(String value) { new File(projectDir, "src/$value/java/com/andrewreitz/velcro") }
+def getNewPackageDir(String newPackagePath, String value) { new File(projectDir, "src/$value/java/$newPackagePath") }
+def getFileToDelete(String value) { new File(projectDir, "src/$value/java/com/andrewreitz") }
+
+String packagePath = props.packageName.replace(".", File.separator)
+
+["debug", "main", "release"].each {
+  FileUtils.moveDirectory(getPackageDir(it), getNewPackageDir(packagePath, it))
+  FileUtils.deleteDirectory(getFileToDelete(it))
 }
