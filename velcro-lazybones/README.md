@@ -1,6 +1,7 @@
 # Velcro Template Project
 
-You have just created a new Android Application using the Velcro Template.
+You have just created a new Android Application using the Velcro Template. This template is heavily
+based off of [Jake Wharton's](//jakewharton.com) [u2020](//github.com/JakeWharton/u2020)
 
 ## Getting Started
 
@@ -23,9 +24,5 @@ of them will do work for you automatically when you use the BaseActivity or Base
 ## Other info
 
 This project contains checkstyles setup. To run them simply run `./gradlew check`. To configure them
-to your liking just update the `codequality/checkstyle.xml`. For more infomration see the
+to your liking just update the `codequality/checkstyle.xml`. For more information see the
 [Checkstyles website](//checkstyle.sourceforge.net/).
-
-This project also contains a plugin for automatically adding and checking your license headers.
-To add a license just update the `codequality/HEADER` file. For more information see
-[License Gradle Plugin website](//github.com/hierynomus/license-gradle-plugin).
