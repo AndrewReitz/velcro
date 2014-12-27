@@ -6,7 +6,6 @@ buildscript {
     classpath 'com.android.tools.build:gradle:1.0.+'
     classpath 'com.jakewharton.hugo:hugo-plugin:1.1.+'
     classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
-    classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.11.+'
   }
 }
 
@@ -94,4 +93,3 @@ android {
 }
 
 apply from: 'gradle/checkstyle.gradle'
-apply from: 'gradle/license.gradle'
