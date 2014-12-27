@@ -22,6 +22,8 @@ ext {
 
   /** Files with these extensions have values that should be replaced with archetype variable */
   FILTER_EXTENSIONS = [".xml", ".java", ".md"]
+
+  isSnapshot = project.hasProperty('release')
 }
 
 task cleanLazybones(type: Delete) {
