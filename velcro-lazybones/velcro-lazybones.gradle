@@ -14,16 +14,17 @@ buildscript {
 
 apply plugin: "groovy"
 apply plugin: "uk.co.cacoethes.lazybones-templates"
+apply from: rootProject.file("gradle/credentials.gradle")
 
 repositories {
   jcenter()
 }
 
 dependencies {
-  testCompile 'org.gradle:gradle-tooling-api:2.2.1'
-  testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
-  testCompile 'commons-io:commons-io:2.4'
-  testCompile 'org.apache.commons:commons-compress:1.9'
+  testCompile "org.gradle:gradle-tooling-api:2.2.1"
+  testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
+  testCompile "commons-io:commons-io:2.4"
+  testCompile "org.apache.commons:commons-compress:1.9"
 }
 
 ext {
@@ -41,12 +42,14 @@ task replaceTemplateTokens(type: Sync) {
 }
 
 lazybones {
+  licenses = ["Apache-2.0"]
+
   templateDirs = files(compiledTemplateDir)
   publish = true
 
-  repositoryName = "<account>/<templates-repo>"
-  repositoryUsername = "your_bintray_username"
-  repositoryApiKey = "your_bintray_api_key"
+  repositoryName = "pieces/lazybones-templates"
+  repositoryUsername = bintrayUser
+  repositoryApiKey = bintrayKey
 
   fileMode "755", "gradlew", "**/*.sh"
 }
