@@ -26,6 +26,11 @@ ext {
   isSnapshot = project.hasProperty('release')
 }
 
+allprojects {
+  version = "1.0.0${isSnapshot?: "-SNAPSHOT"}"
+}
+
+
 task cleanLazybones(type: Delete) {
   description = "Clean the velcro-lazybones folder."
 

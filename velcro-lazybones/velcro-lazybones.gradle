@@ -32,12 +32,19 @@ ext {
   compiledTemplateDir = file("$buildDir/velcro-templates/velcro")
 }
 
-// Just moves to template dir, but will be used to replace tokens later
 task replaceTemplateTokens(type: Sync) {
-  from('src/templates/velcro') {
+  from("src/templates/velcro") {
+    include "VERSION"
+    filter {
+      it.replace("@version@", project.version)
+    }
+  }
+  from("src/templates/velcro") {
+    exclude "VERSION"
     exclude "build"
     exclude "*.iml"
   }
+
   into compiledTemplateDir
 }
 
