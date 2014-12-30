@@ -3,7 +3,7 @@ ext {
   APP_FOLDER = "velcro-app"
 
   /** The resources folder inside the archetype to place the app files */
-  LAZYBONES_FOLDER = "velcro-lazybones/templates/velcro"
+  LAZYBONES_FOLDER = "velcro-lazybones/src/templates/velcro"
 
   /** App Name needs to be filtered out of files and replaced with ${applicationName} */
   FILTER_APP_NAME = "Velcro"
