@@ -28,8 +28,7 @@ Edit/create `~/.lazybones/config.groovy` and add the following.
 
 Run `lazybones list` to see all the available templates.
 Run `lazybones create <template name> <template version> <target directory>` to create a new
-project for example run `lazybones create android-lib my-awesome-application` to create a new android
-library project.
+Velcro project for example run `lazybones create velcro my-awesome-application`.
 
 ## Libraries Included
 
