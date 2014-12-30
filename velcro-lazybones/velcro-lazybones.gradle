@@ -1,0 +1,93 @@
+import velcro.gradle.WriteTestConfig
+
+buildscript {
+  repositories {
+    maven {
+      url "http://dl.bintray.com/pledbrook/plugins"
+    }
+  }
+
+  dependencies {
+    classpath "uk.co.cacoethes:lazybones-gradle:1.2.1"
+  }
+}
+
+apply plugin: "groovy"
+apply plugin: "uk.co.cacoethes.lazybones-templates"
+apply from: rootProject.file("gradle/credentials.gradle")
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  testCompile "org.gradle:gradle-tooling-api:2.2.1"
+  testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
+  testCompile "commons-io:commons-io:2.4"
+  testCompile "org.apache.commons:commons-compress:1.9"
+}
+
+ext {
+  generatedTestResourcesDir = file("$buildDir/generated-test-resources")
+  compiledTemplateDir = file("$buildDir/velcro-templates/velcro")
+}
+
+task replaceTemplateTokens(type: Sync) {
+  from("src/templates/velcro") {
+    include "VERSION"
+    filter {
+      it.replace("@version@", project.version)
+    }
+  }
+  from("src/templates/velcro") {
+    exclude "VERSION"
+    exclude "build"
+    exclude "*.iml"
+  }
+
+  into compiledTemplateDir
+}
+
+lazybones {
+  licenses = ["Apache-2.0"]
+
+  templateDirs = files(compiledTemplateDir)
+  publish = true
+
+  repositoryName = "pieces/lazybones-templates"
+  repositoryUsername = bintrayUser
+  repositoryApiKey = bintrayKey
+
+  fileMode "755", "gradlew", "**/*.sh"
+}
+
+task writeTestConfig(type: WriteTestConfig) {
+  generatedTestResourcesDir = project.generatedTestResourcesDir
+  testProperties.putAll(
+    "template.path": project.compiledTemplateDir.absolutePath
+  )
+}
+
+sourceSets.test.resources.srcDir generatedTestResourcesDir
+
+processTestResources.dependsOn writeTestConfig
+
+packageTemplateVelcro {
+  dependsOn test, replaceTemplateTokens
+  it.doFirst {
+    if (isSnapshot) {
+      throw new GradleException(
+              "Cannot publish lazybones template with a snapshot version: $version")
+    }
+  }
+}
+
+task prepareTestResources {
+  dependsOn replaceTemplateTokens, writeTestConfig
+}
+
+test {
+  inputs.dir compiledTemplateDir
+
+  dependsOn prepareTestResources
+}

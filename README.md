@@ -2,54 +2,33 @@
 
 ## Bootstrap for your Android Projects.
 
-![Velcro Image](velcro-android.png)
+![Velcro Image](media/velcro-android.png)
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Velcro-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1027)
 
-Get your Android applications off the ground and running fast with this archetype. This bootstrap
+Get your Android applications off the ground and running quickly with this template. This bootstrap
 should contain everything you need to get going but not so much you have to spend time stripping
 things out. If you find your self deleting something frequently then it should probably be removed.
 This application is highly based off of Jake Wharton's [u2020](https://github.com/JakeWharton/u2020)
 and has a debug drawer ready and waiting for more awesomeness.
 
-## Usage
+## Getting started
 
-### Website
+Requirements: Lazybones 0.7+
 
-The easiest way to get started is with the [website](http://velcro.andrewreitz.com).
+Install [lazybones](https://github.com/pledbrook/lazybones) using [gvm](//gvmtool.net/),
+[jenv](//jenv.io/) or from [lazybones bintray](https://bintray.com/pledbrook/lazybones-templates/lazybones/view)
 
-1. Fill in Application Name and Package
-1. Unzip the downloaded generated project
-1. `chmod +x gradlew`
-1. Get editing in your favorite editor
+Edit/create `~/.lazybones/config.groovy` and add the following.
 
-(The website is looking for a better home. If anyone has a place that is up all the time and can run a .jar file please
-let me know)
+    bintrayRepositories = [
+      "pieces/lazybones-templates",
+      "pledbrook/lazybones-templates"
+    ]
 
-### Command line
-
-You will need Maven installed to use this archetype
-
-Run:
-
-    mvn archetype:generate \
-    -DarchetypeArtifactId=velcro \
-    -DarchetypeGroupId=com.andrewreitz.velcro \
-    -DarchetypeVersion=3.0.3 \
-    -DgroupId={your.package.name.here} \
-    -DartifactId={app-name} \
-    -DapplicationName={AppName} \
-    -Dversion=1.0
-
-Filling in the groupId, artifactId, and applicationName. Where groupId is the package you want for
-your application, artifactId should be your application name with no spaces (ex. my-test-app), and
-applicationName is the name of your application all one word (ex. MyTestApp).
-
-cd into the directory that was created (my-test-app) and run the following
-
-    chmod +x gradlew
-
-Your application is now ready to be imported into Android Studio or run gradle tasks
+Run `lazybones list` to see all the available templates.
+Run `lazybones create <template name> <template version> <target directory>` to create a new
+Velcro project for example run `lazybones create velcro my-awesome-application`.
 
 ## Libraries Included
 
@@ -64,22 +43,17 @@ of them will do work for you automatically when you use the BaseActivity or Base
 * [Madge](https://github.com/JakeWharton/madge) Asset Debugging
 * [Scalpel](https://github.com/JakeWharton/scalpel) View Debugging
 
-## Other Info
-
-The gradle.properties.dist is an example of what your gradle.properties should look like. This helps
- avoid checking in the release signing passwords. The information in the gradle.properties can be
- incorrect for debug builds but is still required to be there for gradle to run. The pom.xml is left
- over from the archetype and my be deleted.
-
 ## Contributing
 
 A gradle script has been setup so that all you need to do to add your own code to Velcro is to open
 up the velcro-app and work on it like you would any other Android project. Assuming you keep the
 same package and application name (Velcro) you should be able to run
-`gradle cleanArchetype copyToArchetype`. This will copy
+`gradlew cleanLazybones copyToLazybones`. This will copy
 the files over into their correct location in the archetype project and replace strings with
-archetype variables where required. From this point you can continue on like it's a standard maven
-archetype for testing and deployment (`mvn clean install`).
+lazybones variables where required. Then run `gradlew installTemplateVelcro` to install it to your
+local lazybones store to try out your changes. This will run an integration test before it
+publishes so it should in theory work. Note, you will need lazybones installed for the integration
+test to run.
 
 ## License
 

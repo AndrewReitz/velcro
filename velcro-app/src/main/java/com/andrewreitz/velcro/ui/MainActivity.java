@@ -10,11 +10,9 @@ import com.andrewreitz.velcro.ui.misc.BaseActivity;
 import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity {
-
   @Inject AppContainer appContainer;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     VelcroApp app = VelcroApp.get(this);

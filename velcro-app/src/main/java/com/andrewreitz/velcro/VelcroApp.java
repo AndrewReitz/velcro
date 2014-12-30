@@ -2,17 +2,10 @@ package com.andrewreitz.velcro;
 
 import android.app.Application;
 import android.content.Context;
-
 import com.andrewreitz.velcro.ui.ActivityHierarchyServer;
-
-import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
-
-import butterknife.ButterKnife;
 import dagger.ObjectGraph;
 import hugo.weaving.DebugLog;
-import timber.log.Timber;
+import javax.inject.Inject;
 
 public class VelcroApp extends Application {
 
@@ -46,5 +39,4 @@ public class VelcroApp extends Application {
   public static VelcroApp get(Context context) {
     return (VelcroApp) context.getApplicationContext();
   }
-
 }
