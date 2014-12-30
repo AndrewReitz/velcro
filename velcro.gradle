@@ -23,11 +23,11 @@ ext {
   /** Files with these extensions have values that should be replaced with archetype variable */
   FILTER_EXTENSIONS = [".xml", ".java", ".md"]
 
-  isSnapshot = project.hasProperty('release')
+  isSnapshot = !project.hasProperty('release')
 }
 
 allprojects {
-  version = "1.0.0${isSnapshot?: "-SNAPSHOT"}"
+  version = "1.0.0${isSnapshot == true ? "-SNAPSHOT" : ""}"
 }
 
 
