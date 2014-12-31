@@ -4,6 +4,7 @@
 
 ![Velcro Image](media/velcro-android.png)
 
+[![Build Status](https://snap-ci.com/pieces029/velcro/branch/master/build_image)](https://snap-ci.com/pieces029/velcro/branch/master)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Velcro-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1027)
 
 Get your Android applications off the ground and running quickly with this template. This bootstrap
