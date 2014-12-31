@@ -1,5 +1,4 @@
-include ':velcro-lazybones'
-rootProject.name = 'velcro'
+rootProject.name = 'velcro-app'
 
 def setBuildFile(project) {
   project.buildFileName = "${project.name}.gradle"

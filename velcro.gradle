@@ -1,3 +1,7 @@
+import java.nio.file.Files
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING
+
 ext {
   /** Folder where the application we are generating the archetype is coming from */
   APP_FOLDER = "velcro-app"
@@ -27,7 +31,7 @@ ext {
 }
 
 allprojects {
-  version = "1.0.0${isSnapshot == true ? "-SNAPSHOT" : ""}"
+  version = "1.0.1${isSnapshot == true ? "-SNAPSHOT" : ""}"
 }
 
 
@@ -47,6 +51,11 @@ task cleanLazybones(type: Delete) {
 
 task copyToLazybones(type: Copy) {
   description = "Copy velcro-app to velcro-lazybones."
+
+  // copy explicitly the git ignore because gradle copy forgets it...
+  File gitIgnore = new File((String) APP_FOLDER, ".gitignore")
+  Files.copy(gitIgnore.toPath(), new File((String) LAZYBONES_FOLDER, gitIgnore.name).toPath(),
+          REPLACE_EXISTING)
 
   def copySpec = project.copySpec {
     from APP_FOLDER

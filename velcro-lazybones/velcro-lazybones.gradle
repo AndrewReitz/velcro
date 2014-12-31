@@ -74,12 +74,6 @@ processTestResources.dependsOn writeTestConfig
 
 packageTemplateVelcro {
   dependsOn test, replaceTemplateTokens
-  it.doFirst {
-    if (isSnapshot) {
-      throw new GradleException(
-              "Cannot publish lazybones template with a snapshot version: $version")
-    }
-  }
 }
 
 task prepareTestResources {

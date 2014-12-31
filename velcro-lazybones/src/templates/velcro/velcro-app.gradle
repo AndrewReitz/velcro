@@ -15,7 +15,7 @@ def versionMinor = 0
 def versionPatch = 0
 def versionBuild = 0
 
-apply from: 'gradle/signing.gradle'
+apply from: rootProject.file('gradle/signing.gradle')
 apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
 apply plugin: 'hugo'
@@ -92,4 +92,4 @@ android {
   }
 }
 
-apply from: 'gradle/checkstyle.gradle'
+apply from: rootProject.file('gradle/checkstyle.gradle')
