@@ -8,7 +8,7 @@ buildscript {
   }
 
   dependencies {
-    classpath "uk.co.cacoethes:lazybones-gradle:1.2.1"
+    classpath "uk.co.cacoethes:lazybones-gradle:1.2.3"
   }
 }
 
@@ -21,8 +21,9 @@ repositories {
 }
 
 dependencies {
-  testCompile "org.gradle:gradle-tooling-api:2.2.1"
-  testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
+  compile "org.gradle:gradle-tooling-api:2.3"
+
+  testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
   testCompile "commons-io:commons-io:2.4"
   testCompile "org.apache.commons:commons-compress:1.9"
 }
@@ -33,12 +34,6 @@ ext {
 }
 
 task replaceTemplateTokens(type: Sync) {
-  from("src/templates/velcro") {
-    include "VERSION"
-    filter {
-      it.replace("@version@", project.version)
-    }
-  }
   from("src/templates/velcro") {
     exclude "VERSION"
     exclude "build"
@@ -59,12 +54,16 @@ lazybones {
   repositoryApiKey = bintrayKey
 
   fileMode "755", "gradlew", "**/*.sh"
+
+  template("velcro") {
+    version = project.version
+  }
 }
 
 task writeTestConfig(type: WriteTestConfig) {
   generatedTestResourcesDir = project.generatedTestResourcesDir
   testProperties.putAll(
-    "template.path": project.compiledTemplateDir.absolutePath
+          "template.path": project.compiledTemplateDir.absolutePath
   )
 }
 

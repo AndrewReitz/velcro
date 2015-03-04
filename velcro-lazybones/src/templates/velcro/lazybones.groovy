@@ -22,6 +22,12 @@ props.packageName = ask("Define value for 'package' [com.example]: ", "com.examp
 String applicationNameInput = ask("Define value for 'applicationName' [ExampleApp]: ", "ExampleApp", "applicationName").capitalize()
 String gradleProjectName = transformText(applicationNameInput, from: NameType.CAMEL_CASE, to: NameType.HYPHENATED)
 String applicationName = transformText(applicationNameInput, from: NameType.HYPHENATED, to: NameType.CAMEL_CASE)
+
+println "packageName: $props.packageName"
+println "applicationNameinput: $applicationNameInput"
+println "gradleProjectName: $gradleProjectName"
+println "applicationName: $applicationName"
+
 props.applicationName = applicationName
 props.projectName = gradleProjectName
 
