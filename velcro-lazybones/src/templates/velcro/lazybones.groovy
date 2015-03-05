@@ -19,31 +19,26 @@ registerDefaultEngine new HandlebarsTemplateEngine()
 def props = [:]
 props.packageName = ask("Define value for 'package' [com.example]: ", "com.example", "packageName")
 
-String applicationNameInput = ask("Define value for 'applicationName' [ExampleApp]: ", "ExampleApp", "applicationName").capitalize()
+String applicationNameInput = ask("Define value for 'applicationName' [Example]: ", "Example", "applicationName").capitalize()
 String gradleProjectName = transformText(applicationNameInput, from: NameType.CAMEL_CASE, to: NameType.HYPHENATED)
 String applicationName = transformText(applicationNameInput, from: NameType.HYPHENATED, to: NameType.CAMEL_CASE)
+
 props.applicationName = applicationName
 props.projectName = gradleProjectName
 
 processTemplates "src/**/*.java", props
 processTemplates "src/**/*.xml", props
-processTemplates "settings.gradle", props
-
-// Move velcro-app.gradle to build.gradle
-File srcFile = new File(projectDir, "velcro-app.gradle")
-File destFile = new File(projectDir, "${gradleProjectName}.gradle")
-FileUtils.moveFile(srcFile, destFile)
 
 projectDir.eachFileRecurse (FileType.FILES) { file ->
   if (file.name.contains(FILE_FILTER)) {
-    destFile = new File(file.parent, file.name.replace(FILE_FILTER, applicationName))
-    FileUtils.moveFile(file, destFile)
+    destFile = new File(file.parent as File, file.name.replace(FILE_FILTER, applicationName) as String)
+    FileUtils.moveFile(file as File, destFile as File)
   }
 }
 
-def getPackageDir(String value) { new File(projectDir, "src/$value/java/com/andrewreitz/velcro") }
-def getNewPackageDir(String newPackagePath, String value) { new File(projectDir, "src/$value/java/$newPackagePath") }
-def getFileToDelete(String value) { new File(projectDir, "src/$value/java/com/andrewreitz") }
+def getPackageDir(String value) { new File(projectDir as File, "src/$value/java/com/andrewreitz/velcro") }
+def getNewPackageDir(String newPackagePath, String value) { new File(projectDir as File, "src/$value/java/$newPackagePath") }
+def getFileToDelete(String value) { new File(projectDir as File, "src/$value/java/com/andrewreitz/velcro") }
 
 String packagePath = props.packageName.replace(".", File.separator)
 

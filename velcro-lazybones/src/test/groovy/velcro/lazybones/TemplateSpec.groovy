@@ -11,6 +11,8 @@ import org.junit.rules.TemporaryFolder
 import spock.lang.Specification
 import velcro.lazybones.fixture.TestConfig
 
+import java.util.concurrent.TimeUnit
+
 import static org.apache.commons.compress.archivers.ArchiveStreamFactory.ZIP
 
 class TemplateSpec extends Specification {
@@ -64,13 +66,15 @@ class TemplateSpec extends Specification {
   def "create and compile new project"() {
     given:
       ProcessBuilder processBuilder = new ProcessBuilder("lazybones", "create",
-              "velcro-test", "0.0.0-SNAPSHOT", ".", "-PpackageName=com.velcro.test",
-              "-PapplicationName=VelcroTest")
+              "velcro-test", "0.0.0-SNAPSHOT", ".", "-PpackageName=com.awesomeapp.test",
+              "-PapplicationName=SpockTest")
       processBuilder.directory(projectDirectory.root)
       processBuilder.environment().put("PATH", System.getenv("PATH"))
       def process = processBuilder.start()
       if (process.waitFor() != 0) {
-        throw new Exception("Error generating project ${process.inputStream.readLines().join("\n")}")
+        throw new Exception("Error generating project " +
+                "${process.inputStream.readLines().join("\n")} " +
+                "\n ${process.errorStream.readLines().join("\n")}")
       }
 
       DefaultGradleConnector connector = GradleConnector.newConnector() as DefaultGradleConnector
@@ -78,6 +82,7 @@ class TemplateSpec extends Specification {
     when:
       connector.connect().newBuild().forTasks("clean", "assembleDebug").run()
     then:
+    new File(projectDirectory.root, "src/main/java/com/awesomeapp/test/SpockTestApp.java").exists()
       noExceptionThrown()
   }
 }
