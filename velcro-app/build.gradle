@@ -3,9 +3,9 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:1.0.+'
-    classpath 'com.jakewharton.hugo:hugo-plugin:1.1.+'
-    classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
+    classpath 'com.android.tools.build:gradle:1.1.0'
+    classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
+    classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.0'
   }
 }
 
@@ -18,28 +18,28 @@ def versionBuild = 0
 apply from: rootProject.file('gradle/signing.gradle')
 apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
-apply plugin: 'hugo'
+apply plugin: 'com.jakewharton.hugo'
 
 repositories {
   jcenter()
 }
 
 dependencies {
-  compile 'com.android.support:support-v4:21.0.+'
-  compile 'com.android.support:support-annotations:21.0.+'
+  compile 'com.android.support:support-v4:21.0.3'
+  compile 'com.android.support:support-annotations:21.0.3'
 
-  compile 'com.inkapplications:android-preferences:1.1.+'
+  compile 'com.inkapplications:android-preferences:1.1.0'
 
-  compile 'com.jakewharton.timber:timber:2.5.+'
-  compile 'com.jakewharton:butterknife:6.0.+'
-  debugCompile 'com.jakewharton.madge:madge:1.1.+'
-  debugCompile 'com.jakewharton.scalpel:scalpel:1.1.+'
+  compile 'com.jakewharton.timber:timber:2.7.1'
+  compile 'com.jakewharton:butterknife:6.1.0'
+  debugCompile 'com.jakewharton.madge:madge:1.1.2'
+  debugCompile 'com.jakewharton.scalpel:scalpel:1.1.2'
 
-  compile 'com.squareup.dagger:dagger:1.2.+'
-  provided 'com.squareup.dagger:dagger-compiler:1.2.+'
+  compile 'com.squareup.dagger:dagger:1.2.2'
+  provided 'com.squareup.dagger:dagger-compiler:1.2.2'
 
-  compile 'com.github.frankiesardo:icepick:2.3.+'
-  provided 'com.github.frankiesardo:icepick-processor:2.3.+'
+  compile 'com.github.frankiesardo:icepick:2.3.6'
+  provided 'com.github.frankiesardo:icepick-processor:2.3.6'
 
   compile fileTree(dir: 'libs', include: ['*.jar'])
 }
