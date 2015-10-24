@@ -1,19 +1,16 @@
 package {{packageName}}.ui.misc;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
 
-import {{packageName}}.{{applicationName}}App;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import {{packageName}}.data.Injector;
 import {{packageName}}.ui.ActivityModule;
-
-import java.util.Arrays;
-import java.util.List;
 
 import dagger.ObjectGraph;
 import icepick.Icepick;
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends AppCompatActivity {
 
   private ObjectGraph activityGraph;
 
@@ -22,16 +19,10 @@ public abstract class BaseActivity extends Activity {
     // Restore objects saved with Icepick
     Icepick.restoreInstanceState(this, savedInstanceState);
 
-    // Inject objects into the object graph at the activity level, this is for
-    // objects that need values that aren't available until the activity is created.
-    {{applicationName}}App application = {{applicationName}}App.get(this);
-    activityGraph = application
-        .getObjectGraph()
-        .plus(
-            getModules().toArray()
-        );
-
-    activityGraph.inject(this);
+    // Explicitly reference the application object since we don't want to match our own injector.
+    ObjectGraph appGraph = Injector.obtain(getApplication());
+    appGraph.inject(this);
+    activityGraph = appGraph.plus(new ActivityModule(this));
   }
 
   @Override protected void onDestroy() {
@@ -47,18 +38,15 @@ public abstract class BaseActivity extends Activity {
     Icepick.saveInstanceState(this, outState);
   }
 
-  protected List<Object> getModules() {
-    return Arrays.<Object>asList(
-        new ActivityModule(this)
-    );
-  }
-
   /** Inject the supplied {@code object} using the activity-specific graph. */
   public void inject(Object object) {
     activityGraph.inject(object);
   }
 
-  public static BaseActivity get(Fragment fragment) {
-    return (BaseActivity) fragment.getActivity();
+  @Override public Object getSystemService(@NonNull String name) {
+    if (Injector.matchesService(name)) {
+      return activityGraph;
+    }
+    return super.getSystemService(name);
   }
 }

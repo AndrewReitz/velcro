@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 
 import butterknife.ButterKnife;
+import {{packageName}}.data.Injector;
 import icepick.Icepick;
 
 public abstract class BaseFragment extends Fragment {
@@ -12,7 +13,7 @@ public abstract class BaseFragment extends Fragment {
     super.onActivityCreated(savedInstanceState);
     // Restore objects saved with Icepick
     Icepick.restoreInstanceState(this, savedInstanceState);
-    BaseActivity.get(this).inject(this);
+    Injector.obtain(getActivity()).inject(this);
   }
 
   @Override public void onSaveInstanceState(Bundle outState) {
@@ -25,6 +26,6 @@ public abstract class BaseFragment extends Fragment {
     super.onDestroyView();
 
     // Release the views injected by butterknife
-    ButterKnife.reset(this);
+    ButterKnife.unbind(this);
   }
 }

@@ -11,7 +11,7 @@ import dagger.Provides;
 
 @Module(
     injects = {
-        MainActivity.class
+        /* Fragment's Here */
     },
     addsTo = {{applicationName}}Module.class,
     library = true

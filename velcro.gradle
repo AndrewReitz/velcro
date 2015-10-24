@@ -22,7 +22,7 @@ ext {
   PACKAGE_REPLACE = "{{packageName}}"
 
   /** files to be kept when doing a clean. These are setup specific to the archetype */
-  KEEP_FILES = ["README.md", 'lazybones.groovy', 'VERSION']
+  KEEP_FILES = ["README.md", 'lazybones.groovy', 'VERSION', '.gitignore']
 
   /** Files with these extensions have values that should be replaced with archetype variable */
   FILTER_EXTENSIONS = [".xml", ".java", ".md"]
@@ -31,7 +31,7 @@ ext {
 }
 
 allprojects {
-  version = "1.1.1${isSnapshot == true ? "-SNAPSHOT" : ""}"
+  version = "1.2.0${isSnapshot == true ? "-SNAPSHOT" : ""}"
 }
 
 
@@ -84,5 +84,9 @@ task copyToLazybones(type: Copy) {
 
   into '.'
   with copySpec
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.8'
 }
 

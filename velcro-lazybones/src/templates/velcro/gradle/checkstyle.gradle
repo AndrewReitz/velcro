@@ -6,13 +6,25 @@ checkstyle {
 }
 
 android.applicationVariants.all { variant ->
-  def name = variant.buildType.name
+  def flavors = variant.productFlavors*.name
+  def buildTypes = variant.buildType*.name
 
-  def checkstyle = project.tasks.create "checkstyle${name.capitalize()}", Checkstyle
-  checkstyle.dependsOn variant.javaCompile
-  checkstyle.source variant.javaCompile.source
-  checkstyle.classpath = project.fileTree(variant.javaCompile.destinationDir)
-  checkstyle.exclude('**/BuildConfig.java')
-  checkstyle.exclude('**/R.java')
-  project.tasks.getByName("check").dependsOn checkstyle
+  [flavors, buildTypes].combinations().collect {
+    def flavor = it[0]
+    def buildType = it[1]
+
+    [
+        name     : "$flavor${buildType.capitalize()}",
+        buildType: buildType,
+        flavor   : flavor
+    ]
+  }.each { varient ->
+    def checkstyle = project.tasks.create "checkstyle${varient.name.capitalize()}", Checkstyle
+    checkstyle.dependsOn variant.javaCompile
+    checkstyle.source variant.javaCompile.source
+    checkstyle.classpath = project.fileTree(variant.javaCompile.destinationDir)
+    checkstyle.exclude('**/BuildConfig.java')
+    checkstyle.exclude('**/R.java')
+    project.tasks.getByName("check").dependsOn checkstyle
+  }
 }

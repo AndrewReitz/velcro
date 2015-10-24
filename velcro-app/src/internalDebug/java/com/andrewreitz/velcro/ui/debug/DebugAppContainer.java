@@ -4,9 +4,9 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +48,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import timber.log.Timber;
 
 import static butterknife.ButterKnife.findById;
@@ -86,34 +86,33 @@ public class DebugAppContainer implements AppContainer {
     this.pixelRatioEnabled = pixelRatioEnabled;
   }
 
-  @InjectView(R.id.debug_drawer_layout) DrawerLayout drawerLayout;
-  @InjectView(R.id.debug_content) ViewGroup content;
+  @Bind(R.id.debug_drawer_layout) DrawerLayout drawerLayout;
+  @Bind(R.id.debug_content) ViewGroup content;
 
-  @InjectView(R.id.madge_container) MadgeFrameLayout madgeFrameLayout;
+  @Bind(R.id.madge_container) MadgeFrameLayout madgeFrameLayout;
 
-  @InjectView(R.id.debug_contextual_title) View contextualTitleView;
-  @InjectView(R.id.debug_contextual_list) LinearLayout contextualListView;
+  @Bind(R.id.debug_contextual_title) View contextualTitleView;
+  @Bind(R.id.debug_contextual_list) LinearLayout contextualListView;
 
-  @InjectView(R.id.debug_ui_animation_speed) Spinner uiAnimationSpeedView;
-  @InjectView(R.id.debug_ui_pixel_grid) Switch uiPixelGridView;
-  @InjectView(R.id.debug_ui_pixel_ratio) Switch uiPixelRatioView;
-  @InjectView(R.id.debug_ui_scalpel) Switch uiScalpelView;
-  @InjectView(R.id.debug_ui_scalpel_wireframe) Switch uiScalpelWireframeView;
+  @Bind(R.id.debug_ui_animation_speed) Spinner uiAnimationSpeedView;
+  @Bind(R.id.debug_ui_pixel_grid) Switch uiPixelGridView;
+  @Bind(R.id.debug_ui_pixel_ratio) Switch uiPixelRatioView;
+  @Bind(R.id.debug_ui_scalpel) Switch uiScalpelView;
+  @Bind(R.id.debug_ui_scalpel_wireframe) Switch uiScalpelWireframeView;
 
-  @InjectView(R.id.debug_build_name) TextView buildNameView;
-  @InjectView(R.id.debug_build_code) TextView buildCodeView;
-  @InjectView(R.id.debug_build_sha) TextView buildShaView;
-  @InjectView(R.id.debug_build_date) TextView buildDateView;
+  @Bind(R.id.debug_build_name) TextView buildNameView;
+  @Bind(R.id.debug_build_code) TextView buildCodeView;
+  @Bind(R.id.debug_build_sha) TextView buildShaView;
+  @Bind(R.id.debug_build_date) TextView buildDateView;
 
-  @InjectView(R.id.debug_device_make) TextView deviceMakeView;
-  @InjectView(R.id.debug_device_model) TextView deviceModelView;
-  @InjectView(R.id.debug_device_resolution) TextView deviceResolutionView;
-  @InjectView(R.id.debug_device_density) TextView deviceDensityView;
-  @InjectView(R.id.debug_device_release) TextView deviceReleaseView;
-  @InjectView(R.id.debug_device_api) TextView deviceApiView;
+  @Bind(R.id.debug_device_make) TextView deviceMakeView;
+  @Bind(R.id.debug_device_model) TextView deviceModelView;
+  @Bind(R.id.debug_device_resolution) TextView deviceResolutionView;
+  @Bind(R.id.debug_device_density) TextView deviceDensityView;
+  @Bind(R.id.debug_device_release) TextView deviceReleaseView;
+  @Bind(R.id.debug_device_api) TextView deviceApiView;
 
-  @Override public ViewGroup get(final Activity activity, VelcroApp app) {
-    this.app = app;
+  @Override public ViewGroup bind(final Activity activity) {
     this.activity = activity;
     drawerContext = activity;
 
@@ -124,20 +123,20 @@ public class DebugAppContainer implements AppContainer {
     LayoutInflater.from(drawerContext).inflate(R.layout.debug_drawer_content, drawer);
 
     // Inject after inflating the drawer layout so its views are available to inject.
-    ButterKnife.inject(this, activity);
+    ButterKnife.bind(this, activity);
 
     // Set up the contextual actions to watch views coming in and out of the content area.
     Set<ContextualDebugActions.DebugAction<?>> debugActions = Collections.emptySet();
     ContextualDebugActions contextualActions = new ContextualDebugActions(this, debugActions);
     content.setOnHierarchyChangeListener(HierarchyTreeChangeListener.wrap(contextualActions));
 
-    drawerLayout.setDrawerShadow(R.drawable.debug_drawer_shadow, Gravity.END);
+    drawerLayout.setDrawerShadow(R.drawable.debug_drawer_shadow, GravityCompat.END);
 
     // If you have not seen the debug drawer before, show it with a message
     if (!seenDebugDrawer.get()) {
       drawerLayout.postDelayed(new Runnable() {
         @Override public void run() {
-          drawerLayout.openDrawer(Gravity.END);
+          drawerLayout.openDrawer(GravityCompat.END);
           Toast.makeText(activity, R.string.debug_drawer_welcome, Toast.LENGTH_LONG).show();
         }
       }, TimeUnit.SECONDS.toMillis(1));

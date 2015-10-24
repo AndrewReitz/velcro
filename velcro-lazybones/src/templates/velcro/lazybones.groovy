@@ -42,7 +42,7 @@ def getFileToDelete(String value) { new File(projectDir as File, "src/$value/jav
 
 String packagePath = props.packageName.replace(".", File.separator)
 
-["debug", "main", "release"].each {
+["internalRelease", "main", "production"].each {
   FileUtils.moveDirectory(getPackageDir(it), getNewPackageDir(packagePath, it))
   FileUtils.deleteDirectory(getFileToDelete(it))
 }

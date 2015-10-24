@@ -80,7 +80,7 @@ class TemplateSpec extends Specification {
       DefaultGradleConnector connector = GradleConnector.newConnector() as DefaultGradleConnector
       connector.forProjectDirectory(projectDirectory.root)
     when:
-      connector.connect().newBuild().forTasks("clean", "assembleDebug").run()
+      connector.connect().newBuild().forTasks("clean", /*"checkstyleInternalDebug",*/ "assembleDebug").run()
     then:
     new File(projectDirectory.root, "src/main/java/com/awesomeapp/test/SpockTestApp.java").exists()
       noExceptionThrown()

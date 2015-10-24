@@ -5,3 +5,5 @@ build/
 gradle-app.setting
 
 local.properties
+
+gradle.properties
