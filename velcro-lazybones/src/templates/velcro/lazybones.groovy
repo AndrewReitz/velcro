@@ -19,7 +19,9 @@ registerDefaultEngine new HandlebarsTemplateEngine()
 def props = [:]
 props.packageName = ask("Define value for 'package' [com.example]: ", "com.example", "packageName")
 
-String applicationNameInput = ask("Define value for 'applicationName' [Example]: ", "Example", "applicationName").capitalize()
+String applicationNameInput = ask("Define value for 'applicationName' [Example]: ", "Example", "applicationName")
+        .replace(" ", "")
+        .capitalize()
 String gradleProjectName = transformText(applicationNameInput, from: NameType.CAMEL_CASE, to: NameType.HYPHENATED)
 String applicationName = transformText(applicationNameInput, from: NameType.HYPHENATED, to: NameType.CAMEL_CASE)
 
@@ -38,7 +40,7 @@ projectDir.eachFileRecurse (FileType.FILES) { file ->
 
 def getPackageDir(String value) { new File(projectDir as File, "src/$value/java/com/andrewreitz/velcro") }
 def getNewPackageDir(String newPackagePath, String value) { new File(projectDir as File, "src/$value/java/$newPackagePath") }
-def getFileToDelete(String value) { new File(projectDir as File, "src/$value/java/com/andrewreitz/velcro") }
+def getFileToDelete(String value) { new File(projectDir as File, "src/$value/java/com/andrewreitz") }
 
 String packagePath = props.packageName.replace(".", File.separator)
 
