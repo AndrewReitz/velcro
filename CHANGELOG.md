@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.2.1
+* Fixed issue where empty folders were left over.
+
 ## 1.2.0
 * Updated libraries, gradle plugins, and Android version to the latest (bumped minSdk to 16)
 * Added material design

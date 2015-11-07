@@ -38,7 +38,7 @@ projectDir.eachFileRecurse (FileType.FILES) { file ->
 
 def getPackageDir(String value) { new File(projectDir as File, "src/$value/java/com/andrewreitz/velcro") }
 def getNewPackageDir(String newPackagePath, String value) { new File(projectDir as File, "src/$value/java/$newPackagePath") }
-def getFileToDelete(String value) { new File(projectDir as File, "src/$value/java/com/andrewreitz/velcro") }
+def getFileToDelete(String value) { new File(projectDir as File, "src/$value/java/com/andrewreitz") }
 
 String packagePath = props.packageName.replace(".", File.separator)
 
