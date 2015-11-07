@@ -19,7 +19,9 @@ registerDefaultEngine new HandlebarsTemplateEngine()
 def props = [:]
 props.packageName = ask("Define value for 'package' [com.example]: ", "com.example", "packageName")
 
-String applicationNameInput = ask("Define value for 'applicationName' [Example]: ", "Example", "applicationName").capitalize()
+String applicationNameInput = ask("Define value for 'applicationName' [Example]: ", "Example", "applicationName")
+        .replace(" ", "")
+        .capitalize()
 String gradleProjectName = transformText(applicationNameInput, from: NameType.CAMEL_CASE, to: NameType.HYPHENATED)
 String applicationName = transformText(applicationNameInput, from: NameType.HYPHENATED, to: NameType.CAMEL_CASE)
 
