@@ -31,7 +31,7 @@ ext {
 }
 
 allprojects {
-  version = "1.2.1${isSnapshot == true ? "-SNAPSHOT" : ""}"
+  version = "1.2.2${isSnapshot == true ? "-SNAPSHOT" : ""}"
 }
 
 
